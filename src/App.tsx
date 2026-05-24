@@ -1,9 +1,12 @@
+import { NavContextProvider } from "./context/nav-context/nav-context-provider"
 import { AppRouterProvider } from "./routes/app-router-provider"
 
 function App(){
   return(
     <>
-      <AppRouterProvider/>
+      <NavContextProvider>
+        <AppRouterProvider/>
+      </NavContextProvider>
     </>
   )
 }

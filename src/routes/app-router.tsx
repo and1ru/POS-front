@@ -4,6 +4,7 @@ import { RootPage } from '../pages/Route-page'
 import { DashboardPage } from '../pages/dashboard-page'
 import { ProductsPage } from '../pages/products-page'
 import { EstadisticasPage } from '../pages/estadisticas-page'
+import { VentasPage } from '../pages/ventas-page'
 
 export const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
             {
                 path: "estadisticas",
                 element: <EstadisticasPage/>
+            },
+            {
+                path: "ventas",
+                element: <VentasPage/>
             }
         ]
     }
