@@ -55,9 +55,10 @@ export const ProductsPage = () => {
                 onClick={closeDialog}>X</button>
                 <p>Nombre product</p>
                 <form>
-                    <input type="text" placeholder="product name" className="border"/>
-                    <input type="number" placeholder="price" />
-                    <input type="number" placeholder="stock" />
+                    <input type="text" placeholder="product name" className="border p-2 rounded-lg focus:outline-none"/>
+                    <input type="number" placeholder="price" className="border p-2 rounded-lg focus:outline-none" />
+                    <input type="number" placeholder="stock" className="border p-2 rounded-lg focus:outline-none" />
+                    <button className="p-2 border rounded-lg w-[100%] bg-blue-500 hover:bg-blue-600 transition duration-200 button-active">Enviar</button>
                 </form>
                 
             </dialog>
