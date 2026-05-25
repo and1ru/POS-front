@@ -8,7 +8,7 @@ import { VentasPage } from '../pages/ventas-page'
 
 export const router = createBrowserRouter([
     {
-        path:"/home",
+        path:"",
         element: <HomePage/>
     },
     {
@@ -28,7 +28,7 @@ export const router = createBrowserRouter([
                 element: <EstadisticasPage/>
             },
             {
-                path: "ventas",
+                path: "historial-ventas",
                 element: <VentasPage/>
             }
         ]
