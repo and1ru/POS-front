@@ -7,11 +7,21 @@ import { EstadisticasPage } from '../pages/estadisticas-page'
 import { VentasPage } from '../pages/ventas-page'
 import { ManageEmployeesPage } from '../pages/Manage-employees-page'
 import { CreateProductPage } from '../pages/create-product-page'
+import { LoginPage } from '../pages/login-page'
+import { RegisterPage } from '../pages/register-page'
 
 export const router = createBrowserRouter([
     {
         path:"",
         element: <HomePage/>
+    },
+    {
+        path: "login",
+        element: <LoginPage/>
+    },
+    {
+        path: "register",
+        element: <RegisterPage/>
     },
     {
         path: "/private/",
