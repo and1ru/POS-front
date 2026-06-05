@@ -5,6 +5,8 @@ import { DashboardPage } from '../pages/dashboard-page'
 import { ProductsPage } from '../pages/products-page'
 import { EstadisticasPage } from '../pages/estadisticas-page'
 import { VentasPage } from '../pages/ventas-page'
+import { ManageEmployeesPage } from '../pages/Manage-employees-page'
+import { CreateProductPage } from '../pages/create-product-page'
 
 export const router = createBrowserRouter([
     {
@@ -30,6 +32,14 @@ export const router = createBrowserRouter([
             {
                 path: "historial-ventas",
                 element: <VentasPage/>
+            },
+            {
+                path: "manage-employees",
+                element: <ManageEmployeesPage/>
+            },
+            {
+                path: "create-product",
+                element: <CreateProductPage/>
             }
         ]
     }

@@ -19,7 +19,7 @@ export const NavComponent = () => {
         <LiNavComponent address="/private/historial-ventas" title="historial de ventas"/>
         <LiNavComponent address="/private/estadisticas" title="estadisticas"/>
         <LiNavComponent address="/private/create-product" title="create product"/>
-        <LiNavComponent address="/private/handle-workers" title="handle workers"></LiNavComponent>
+        <LiNavComponent address="/private/manage-employees" title="Manage employees"/>
         <LiNavComponent address="" title="salir"/>
       </ul>
     </nav>
