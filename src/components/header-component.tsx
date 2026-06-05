@@ -19,9 +19,11 @@ export const HeaderComponent = () => {
 
   return (
     <header className="h-15 w-full bg-orange-500 dark:bg-blue-400">
-      <ul className="flex p-4">
+      <ul className="flex p-4 gap-5 content-center">
         <li>
-          <button onClick={handleNav}>mostrar</button>
+          <button 
+          className="bg-gray-800 p-2 rounded-lg text-white"
+          onClick={handleNav}>mostrar</button>
         </li>
         <li>
           <div
@@ -29,8 +31,9 @@ export const HeaderComponent = () => {
             className="w-20 h-10 border rounded-2xl p-2 absolute"
           >
             <div
-              className={`h-full w-[50%] rounded-full border relative ${darkMode ? "translate-x-[100%]" : ""} transition duration-200`}
-            ></div>
+              className={`h-full w-[50%] rounded-full border relative ${darkMode ? "translate-x-full moon" : "sun"} transition duration-200`}
+            >
+            </div>
           </div>
         </li>
       </ul>
