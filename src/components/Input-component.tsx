@@ -1,15 +1,14 @@
-import { Controller, type Control, type FieldError } from "react-hook-form";
-import type { loginType } from "../schemas/login-shema";
+import { Controller, type Control, type FieldError, type FieldValues, type Path } from "react-hook-form";
 
-interface Props {
-    name: keyof loginType
+interface Props<T extends FieldValues> {
+    name: Path<T>
     label: string;
-    control: Control<loginType>
+    control: Control<T>
     type:string;
     error?: FieldError
 }
 
-export const InputComponent = ({name,label,control,type, error}:Props) => {
+export const InputComponent = <T extends FieldValues>({name,label,control,type, error}:Props<T>) => {
   return (
     <>
     <label htmlFor={name}>{label}</label>
