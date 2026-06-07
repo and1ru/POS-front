@@ -9,6 +9,7 @@ import { ManageEmployeesPage } from '../pages/Manage-employees-page'
 import { CreateProductPage } from '../pages/create-product-page'
 import { LoginPage } from '../pages/login-page'
 import { RegisterPage } from '../pages/register-page'
+import { EmployeePage } from '../pages/employee-page'
 
 export const router = createBrowserRouter([
     {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
             {
                 path: "create-product",
                 element: <CreateProductPage/>
+            },
+            {
+                path: "employee/:id",
+                element: <EmployeePage/>
             }
         ]
     }
