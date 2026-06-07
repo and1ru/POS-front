@@ -1,6 +1,7 @@
 import { useForm, type SubmitHandler } from "react-hook-form";
-import type { loginType } from "../schemas/login-shema";
+import { loginSchema, type loginType } from "../schemas/login-shema";
 import { InputComponent } from "../components/Input-component";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 export const LoginPage = () => {
   const {handleSubmit, control, formState: {errors}} = useForm<loginType>({
@@ -8,7 +9,8 @@ export const LoginPage = () => {
       email: "",
       password: ""
     },
-    mode: "onBlur"
+    mode: "onBlur",
+    resolver: zodResolver(loginSchema)
   })
 
   const handleForm:SubmitHandler<loginType> = (data) => {
