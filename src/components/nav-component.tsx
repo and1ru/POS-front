@@ -15,6 +15,7 @@ export const NavComponent = () => {
     >
       <ul className={`w-70 h-screen bg-gray-800 flex flex-col gap-5 ${navContext ? "" : "translate-x-[-63vh]"} transition-all duration-300`}>
         <LiNavComponent address="/private/dashboard" title="dashboard"/>
+        <LiNavComponent address="/private/venta" title="venta"/>
         <LiNavComponent address="/private/products" title="products"/>
         <LiNavComponent address="/private/historial-ventas" title="historial de ventas"/>
         <LiNavComponent address="/private/estadisticas" title="estadisticas"/>

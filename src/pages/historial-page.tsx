@@ -1,6 +1,6 @@
 import { HistorialTargetComponent } from "../components/historial-target-component";
 
-export const VentasPage = () => {
+export const HistorialPage = () => {
   return (
     <>
       <section>

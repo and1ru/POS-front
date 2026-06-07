@@ -4,12 +4,13 @@ import { RootPage } from '../pages/Route-page'
 import { DashboardPage } from '../pages/dashboard-page'
 import { ProductsPage } from '../pages/products-page'
 import { EstadisticasPage } from '../pages/estadisticas-page'
-import { VentasPage } from '../pages/ventas-page'
+import { HistorialPage } from '../pages/historial-page'
 import { ManageEmployeesPage } from '../pages/Manage-employees-page'
 import { CreateProductPage } from '../pages/create-product-page'
 import { LoginPage } from '../pages/login-page'
 import { RegisterPage } from '../pages/register-page'
 import { EmployeePage } from '../pages/employee-page'
+import { VentaPage } from '../pages/venta-page'
 
 export const router = createBrowserRouter([
     {
@@ -42,7 +43,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "historial-ventas",
-                element: <VentasPage/>
+                element: <HistorialPage/>
             },
             {
                 path: "manage-employees",
@@ -55,6 +56,10 @@ export const router = createBrowserRouter([
             {
                 path: "employee/:id",
                 element: <EmployeePage/>
+            },
+            {
+                path: "venta",
+                element:<VentaPage/>
             }
         ]
     }
