@@ -3,15 +3,15 @@ import { EmployeeTargetComponent } from "./employee-card-component";
 export const ManageEmployeesPage = () => {
   return (
     <>
-      <h1 className="text-center text-2xl font-bold">Manage Employees</h1>
-      <section>
-        <form>
-          <label htmlFor="">Name employee</label>
-          <input type="text" className="border p-2 rounded-lg"/>
-          <select>
+      <h1 className="text-center text-2xl font-bold mb-10">Manage Employees</h1>
+      <section className="mb-10">
+        <form className="grid grid-cols-2 gap-3">
+          <label htmlFor="" className="col-span-2">Name employee</label>
+          <input type="text" className="border p-2 rounded-lg col-span-2"/>
+          <select className="border p-2 rounded-lg">
             <option value="">Seleccionar Sede</option>
           </select>
-          <select name="" id="">
+          <select name="" id="" className="border p-2 rounded-lg">
             <option value="">Seleccionar Rol</option>
             <option value="admin">Admin</option>
             <option value=""></option>

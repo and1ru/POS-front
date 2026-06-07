@@ -19,12 +19,17 @@ export const CreateProductPage = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(handleForm)}>
+    <>
+    <h1 className="text-center text-2xl font-bold">Create new Product</h1>
+    <form 
+    className="flex flex-col gap-5"
+    onSubmit={handleSubmit(handleForm)}>
       <InputComponent control={control} label="Product Name" name="name" type="text" error={errors.name} />
       <InputComponent control={control} label="Image" name="image" type="file" error={errors.image} />
       <InputComponent control={control} label="Price" name="price" type="number" error={errors.price} />
       <InputComponent control={control} label="Stock" name="stock" type="number" error={errors.stock} />
-      <button>Enviar</button>
-    </form>
+      <button className="bg-gray-800 p-2 rounded-lg text-white">Enviar</button>
+    </form>    
+    </>
   );
 };

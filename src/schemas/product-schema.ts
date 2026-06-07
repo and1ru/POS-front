@@ -6,7 +6,7 @@ const max_file_size = 5 * 1024 * 1024
 const accepted_image_type = ["image/jpeg", "image/png", "image/webp", "image/jpg"]
 
 export const productSchema = z.object({
-    name: z.string(),
+    name: z.string().min(1,"must be 1 lenght"),
     price: z.number(),
     stock: z.number(),
     // 1. dice que recibira un archivo
