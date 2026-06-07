@@ -17,3 +17,5 @@ export const productSchema = z.object({
             .refine((file) => file.size <= max_file_size, "el tamaño maximo es de 5MB")
             .refine((file) => accepted_image_type.includes(file.type), "Solo se permiten formatos .jpg, .jpeg, .png y .webp")
 })
+
+export type productType = z.infer<typeof productSchema>
