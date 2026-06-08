@@ -1,9 +1,10 @@
 import { HistorialTargetComponent } from "../components/historial-target-component";
+import { styles } from "../helper/style";
 
 export const HistorialPage = () => {
   return (
     <>
-      <h1 className="text-center text-2xl font-bold mb-5">Historial</h1>
+      <h1 className={styles.titulos}>Historial</h1>
       <section className="mb-10">
         <form className="grid grid-cols-2 gap-4">
           <input type="text" placeholder="introduce el id de venta" className="border p-2 rounded-lg col-span-2"/>

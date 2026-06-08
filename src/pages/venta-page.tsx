@@ -1,9 +1,10 @@
 import { ProductVentaTargetComponent } from "../components/product-target-venta-component";
+import { styles } from "../helper/style";
 
 export const VentaPage = () => {
   return (
     <>
-        <h1 className="text-center text-2xl font-bold mb-5">VENTA</h1>
+        <h1 className={styles.titulos}>VENTA</h1>
         <form action="" className="flex justify-center">
             <input type="text" placeholder="product" className="border p-2 rounded-lg w-80"/>
         </form>

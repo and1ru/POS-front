@@ -1,9 +1,10 @@
+import { styles } from "../helper/style";
 import { EmployeeTargetComponent } from "./employee-card-component";
 
 export const ManageEmployeesPage = () => {
   return (
     <>
-      <h1 className="text-center text-2xl font-bold mb-10">Manage Employees</h1>
+      <h1 className={styles.titulos}>Manage Employees</h1>
       <section className="mb-10">
         <form className="grid grid-cols-2 gap-3">
           <label htmlFor="" className="col-span-2">Name employee</label>

@@ -2,6 +2,7 @@ import { useForm, type SubmitHandler } from "react-hook-form";
 import { productSchema, type productType } from "../schemas/product-schema";
 import { InputComponent } from "../components/Input-component";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { styles } from "../helper/style";
 
 export const CreateProductPage = () => {
   const { handleSubmit, control, formState: { errors }} = useForm<productType>({
@@ -20,9 +21,9 @@ export const CreateProductPage = () => {
 
   return (
     <>
-    <h1 className="text-center text-2xl font-bold">Create new Product</h1>
+    <h1 className={styles.titulos}>CREATE NEW PRODUCT</h1>
     <form 
-    className="flex flex-col gap-5"
+    className={styles.formulario}
     onSubmit={handleSubmit(handleForm)}>
       <InputComponent control={control} label="Product Name" name="name" type="text" error={errors.name} />
       <InputComponent control={control} label="Image" name="image" type="file" error={errors.image} />

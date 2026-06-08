@@ -10,7 +10,7 @@ export const EmployeeTargetComponent = ({id}:Props) => {
         navegar(`/private/employee/${id}`, {replace:true})
     }
   return (
-    <div className="border w-40 p-3 rounded-lg">
+    <div className="w-40 bg-white p-3 rounded-lg">
       <h3 className="text-center mb-3">Nombre</h3>
       <p className="mb-2">Rol - sede</p>
       <p>Estado: online</p>
