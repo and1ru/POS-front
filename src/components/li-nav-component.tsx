@@ -9,7 +9,7 @@ export const LiNavComponent = ({address, title}:Props) => {
         <li>
           <Link
             to={`${address}`}
-            className="block text-white font-medium text-xl hover:bg-gray-900 w-full p-5 duration-200 hover:text-2xl cursor-pointer"
+            className="block font-medium text-xl w-full p-5 duration-200 cursor-pointer hover:text-2xl hover:bg-gray-200 "
           >
             {title}
           </Link>

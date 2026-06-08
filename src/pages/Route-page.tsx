@@ -7,7 +7,7 @@ export const RootPage = () => {
     <>
         <HeaderComponent/>
         <NavComponent/>
-        <main className="p-2">
+        <main className="h-screen p-2 bg-gray-100">
             <Outlet/>
         </main>
     </>

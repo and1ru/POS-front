@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavContext } from "../context/nav-context/nav-context";
+import { styles } from "../helper/style";
 
 export const HeaderComponent = () => {
   const { setNavContext} = useNavContext()
@@ -18,11 +19,11 @@ export const HeaderComponent = () => {
   }
 
   return (
-    <header className="h-15 w-full bg-orange-500 dark:bg-blue-400">
+    <header className="w-full">
       <ul className="flex p-4 gap-5 content-center">
         <li>
           <button 
-          className="bg-gray-800 p-2 rounded-lg text-white"
+          className={styles.button}
           onClick={handleNav}>mostrar</button>
         </li>
         <li>

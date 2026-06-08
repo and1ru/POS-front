@@ -1,3 +1,5 @@
+import { styles } from "../helper/style";
+
 export const ProductVentaTargetComponent = () => {
   return (
     <div className="border p-2 rounded-lg">
@@ -5,7 +7,7 @@ export const ProductVentaTargetComponent = () => {
         <p>nombre</p>
         <p>precio</p>
         <p>stock</p>
-        <button className="bg-green-600 w-full p-2 rounded-lg">Agregar</button>
+        <button className={styles.button}>Agregar</button>
     </div>
   );
 };
