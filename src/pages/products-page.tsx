@@ -9,11 +9,14 @@ export const ProductsPage = () => {
 
   return (
     <>
-      <h1 className={styles.titulos}>PRODUCTOS</h1>
+      <h1 className={styles.titulos}>INVENTARIO</h1>
       <section>
         <FormProductsComponents />
       </section>
-      <section className="grid grid-cols-2 gap-10 p-3">
+      <section className="p-3 grid gap-10 grid-cols-2 xl:grid-cols-4">
+        <ProductTargetComponent dialog={dialogRef} />
+        <ProductTargetComponent dialog={dialogRef} />
+        <ProductTargetComponent dialog={dialogRef} />
         <ProductTargetComponent dialog={dialogRef} />
         <ProductTargetComponent dialog={dialogRef} />
         <ProductTargetComponent dialog={dialogRef} />
