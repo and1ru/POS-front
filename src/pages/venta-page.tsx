@@ -5,10 +5,10 @@ import { styles } from "../helper/style";
 export const VentaPage = () => {
   return (
     // 1. Contenedor Flexbox principal con h-screen opcional para ocupar toda la altura
-    <main className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-50">
       
       {/* 2. Columna Izquierda: El carrito con un ancho fijo (ej. w-80 o w-1/4) */}
-      <div className="w-80 border-r border-gray-200 bg-white p-4">
+      <div className="w-80 h-screen border-r border-gray-200 bg-white p-4">
         <CarritoVentasComponent />
       </div>
 
@@ -30,18 +30,18 @@ export const VentaPage = () => {
           <ProductVentaTargetComponent />
           <ProductVentaTargetComponent />
           <ProductVentaTargetComponent />
+          <ProductVentaTargetComponent />          
           <ProductVentaTargetComponent />
+          <ProductVentaTargetComponent />          
           <ProductVentaTargetComponent />
+          <ProductVentaTargetComponent />          
           <ProductVentaTargetComponent />
-          <ProductVentaTargetComponent />
-          <ProductVentaTargetComponent />
-          <ProductVentaTargetComponent />
-          <ProductVentaTargetComponent />
+          <ProductVentaTargetComponent />          
           <ProductVentaTargetComponent />
           <ProductVentaTargetComponent />
         </section>
       </main>
 
-    </main>
+    </div>
   );
 };

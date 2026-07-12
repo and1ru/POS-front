@@ -16,6 +16,9 @@ export const CarritoVentasComponent = () => {
         <CarritoProductComponent />
         <CarritoProductComponent />
         <CarritoProductComponent />
+        <CarritoProductComponent />
+        <CarritoProductComponent />
+        <CarritoProductComponent />
       </div>
 
       {/* Resumen del total y botón de compra fijados abajo */}
