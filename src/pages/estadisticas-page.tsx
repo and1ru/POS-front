@@ -1,58 +1,86 @@
 import { useState } from "react";
-import { CashierTableComponent } from "../components/cashier-table-component";
 import { BranchTableComponent } from "../components/brench-table-component";
+import { CashierTableComponent } from "../components/cashier-table-component";
 import { ProductTableComponent } from "../components/product-table-component";
 
-type Entity = "product" | "cashier" | "branch" | ""
-type DateFilter = "today" | "7 days" | "30 days" | "1 year" | "all"
+type Entity = "product" | "cashier" | "branch" | "";
+type DateFilter = "today" | "7 days" | "30 days" | "1 year" | "all";
+
 export const EstadisticasPage = () => {
-  const [entity, setEntity] = useState<Entity>("")
-  const [_date, setDate] = useState<DateFilter>("all")
+  const [entity, setEntity] = useState<Entity>("");
+  const [_date, setDate] = useState<DateFilter>("all");
 
   const handleEntidad = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setEntity(e.target.value as Entity)
-  }
+    setEntity(e.target.value as Entity);
+  };
 
   const handleDate = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setDate(e.target.value as DateFilter)
-  }
+    setDate(e.target.value as DateFilter);
+  };
 
   return (
-    <>
-      <h1 className="text-center text-2xl font-bold my-10">
+    <main className="max-w-7xl mx-auto p-6">
+
+      <h1 className="text-3xl font-bold text-gray-800 mb-8">
         Estadísticas
       </h1>
-      <section>
-        <form action="" className="grid grid-cols-2 gap-2">
-          <input type="text" className="border p-2 rounded-lg col-span-2" />
-          <select name="" id="" className="border p-2 rounded-lg" onChange={handleEntidad}>
-            <option value={0} >seleccionar</option>
-            <option value="product">product</option>
-            <option value="cashier">cashier</option>
-            <option value="branch">brench</option>
+
+      {/* Filtros */}
+      <section className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm mb-8">
+
+        <h2 className="text-lg font-semibold text-gray-700 mb-6">
+          Filtros
+        </h2>
+
+        <form className="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+          <input
+            type="text"
+            placeholder="Buscar..."
+            className="border border-gray-300 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500"
+          />
+
+          <select
+            value={entity}
+            onChange={handleEntidad}
+            className="border border-gray-300 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-blue-200"
+          >
+            <option value="">Seleccionar entidad</option>
+            <option value="product">Productos</option>
+            <option value="cashier">Cajeros</option>
+            <option value="branch">Sucursales</option>
           </select>
-          <select className="border p-2 rounded-lg" onChange={handleDate}>
-            <option value="all">All time</option>
+
+          <select
+            defaultValue="all"
+            onChange={handleDate}
+            className="border border-gray-300 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-blue-200"
+          >
+            <option value="all">Todo el tiempo</option>
             <option value="today">Hoy</option>
-            <option value="7 days">7 días</option>
-            <option value="30 days">30 días</option>
-            <option value="year">Este año</option>
+            <option value="7 days">Últimos 7 días</option>
+            <option value="30 days">Últimos 30 días</option>
+            <option value="1 year">Este año</option>
           </select>
+
         </form>
       </section>
-      <section className="mt-10">
-        {
-          entity === "branch" && <BranchTableComponent />
-        }
 
-        {
-          entity === "cashier" && <CashierTableComponent />
-        }
+      {/* Resultado */}
+      <section className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
 
-        {
-          entity === "product" && <ProductTableComponent />
-        }
+        {entity === "" && (
+          <div className="text-center py-20 text-gray-400">
+            Selecciona una entidad para visualizar las estadísticas.
+          </div>
+        )}
+
+        {entity === "branch" && <BranchTableComponent />}
+        {entity === "cashier" && <CashierTableComponent />}
+        {entity === "product" && <ProductTableComponent />}
+
       </section>
-    </>
+
+    </main>
   );
 };
