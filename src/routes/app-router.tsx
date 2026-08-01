@@ -1,65 +1,60 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { HomePage } from '../pages/home-page'
-import { RootPage } from '../pages/Route-page'
-import { DashboardPage } from '../pages/dashboard-page'
-import { ProductsPage } from '../pages/products-page'
-import { EstadisticasPage } from '../pages/estadisticas-page'
-import { HistorialPage } from '../pages/historial-page'
-import { ManageEmployeesPage } from '../pages/Manage-employees-page'
-import { CreateProductPage } from '../pages/create-product-page'
-import { LoginPage } from '../pages/login-page'
-import { RegisterPage } from '../pages/register-page'
-import { EmployeePage } from '../pages/employee-page'
-import { VentaPage } from '../pages/venta-page'
+import { Inventory } from '../pages/Inventory/Inventory'
+import { History } from '../pages/History/History'
+import { Home } from '../pages/Home/Home'
+import { Login } from '../pages/Login/Login'
+import { Register } from '../pages/Register/Register'
+import { Root } from '../pages/Root/Root'
+import { Dashboard } from '../pages/dashboard/Dashboard'
+import { Statistics } from '../pages/Statistics/Statistics'
+import { ManageEmployees } from '../pages/Employees/Employees'
+import { CreateProduct } from '../pages/CreateProduct/CreateProduct'
+import { Sell } from '../pages/Sell/Sell'
 
 export const router = createBrowserRouter([
     {
         path:"",
-        element: <HomePage/>
+        element: <Home/>
     },
     {
         path: "login",
-        element: <LoginPage/>
+        element: <Login/>
     },
     {
         path: "register",
-        element: <RegisterPage/>
+        element: <Register/>
     },
     {
         path: "/private/",
-        element:<RootPage/>,
+        element:<Root/>,
         children: [
             {
                 path: "dashboard",
-                element: <DashboardPage/>
+                element: <Dashboard/>
             },
             {
-                path: "products",
-                element: <ProductsPage/>
+                path: "inventory",
+                element: <Inventory/>
             },
             {
-                path: "estadisticas",
-                element: <EstadisticasPage/>
+                path: "statistics",
+                element: <Statistics/>
             },
             {
-                path: "historial-ventas",
-                element: <HistorialPage/>
+                path: "history",
+                element: <History />
             },
             {
                 path: "manage-employees",
-                element: <ManageEmployeesPage/>
+                element: <ManageEmployees/>
             },
             {
                 path: "create-product",
-                element: <CreateProductPage/>
+                element: <CreateProduct/>
             },
             {
-                path: "employee/:id",
-                element: <EmployeePage/>
-            },
-            {
-                path: "venta",
-                element:<VentaPage/>
+                path: "sell",
+                element:<Sell/>
             }
         ]
     }
