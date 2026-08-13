@@ -13,6 +13,8 @@ import { Sell } from '../pages/Sell/Sell'
 import { NotFound } from '../pages/NotFound/NotFound'
 import { CreateBranch } from '../pages/CreateBranch/CreateBranch'
 import { ConfirmSale } from '../pages/ConfirmSale/ConfirmSale'
+import { ForgotPassword } from '../pages/ForgotPassoword/ForgotPassword'
+import { ResetPassword } from '../pages/ResetPassword/ResetPassword'
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +28,14 @@ export const router = createBrowserRouter([
     {
         path: "register",
         element: <Register/>
+    },
+    {
+        path: "forgotPassword",
+        element: <ForgotPassword/>
+    },
+    {
+        path: "resetPassword",
+        element: <ResetPassword />
     },
     {
         path: "/private/",

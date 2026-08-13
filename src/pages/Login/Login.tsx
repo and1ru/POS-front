@@ -34,9 +34,9 @@ export const Login = () => {
           <Input control={control} error={errors.email} label="Correo Electrónico" name="email" type="email"/>
           <Input control={control} error={errors.password} label="Contraseña" name="password" type="password"/>
           <div className="text-right -mt-2">
-            <a href="#" className="text-xs font-semibold text-indigo-600 hover:text-indigo-500 transition-colors">
+            <Link to="/forgotPassword" replace className="text-xs font-semibold text-indigo-600 hover:text-indigo-500 transition-colors">
               ¿Olvidaste tu contraseña?
-            </a>
+            </Link>
           </div>
           <div className="text-right -mt-2">
             <Link to="/register" replace className="text-xs font-semibold text-indigo-600 hover:text-indigo-500 transition-colors">
