@@ -3,22 +3,17 @@ import { BranchTable } from "../../components/BranchTable/BranchTable";
 import { CashierTable } from "../../components/CashierTable/CashierTable";
 import { ProductTable } from "../../components/ProductTable/ProductTable";
 import { useSearchParams } from "react-router-dom";
+import { FilterDate } from "../../components/FilterDate/FilterDate";
 
 type Entity = "product" | "cashier" | "branch" | "";
-type DateFilter = "today" | "7 days" | "30 days" | "1 year" | "all";
 
 export const Statistics = () => {
   const [entity, setEntity] = useState<Entity>("");
-  const [date, setDate] = useState<DateFilter>("all");
   const [name, setName] = useState("")
   const [_searchParams,setSearchParams] = useSearchParams()
 
   const handleEntidad = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setEntity(e.target.value as Entity);
-  };
-
-  const handleDate = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setDate(e.target.value as DateFilter);
   };
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,8 +22,8 @@ export const Statistics = () => {
   }
 
   useEffect(() => {
-    setSearchParams({entity, date, name})
-  }, [entity, date, name])
+    setSearchParams({entity, name})
+  }, [entity, name])
 
   return (
     <main className="max-w-7xl mx-auto p-6">
@@ -64,19 +59,7 @@ export const Statistics = () => {
             <option value="cashier">Cajeros</option>
             <option value="branch">Sucursales</option>
           </select>
-
-          <select
-            defaultValue="all"
-            onChange={handleDate}
-            className="border border-gray-300 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-blue-200"
-          >
-            <option value="all">Todo el tiempo</option>
-            <option value="today">Hoy</option>
-            <option value="7 days">Últimos 7 días</option>
-            <option value="30 days">Últimos 30 días</option>
-            <option value="1 year">Este año</option>
-          </select>
-
+          <FilterDate />
         </form>
       </section>
 
@@ -88,11 +71,9 @@ export const Statistics = () => {
             Selecciona una entidad para visualizar las estadísticas.
           </div>
         )}
-
         {entity === "branch" && <BranchTable />}
         {entity === "cashier" && <CashierTable />}
         {entity === "product" && <ProductTable />}
-
       </section>
 
     </main>

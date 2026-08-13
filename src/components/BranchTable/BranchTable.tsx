@@ -1,22 +1,15 @@
-import { useState } from "react";
+import { FilterMoney } from "../FilterMoney/FilterMoney";
 
-type Money = "asc" | "desc"
 export const BranchTable = () => {
-  const [money, setMoney] = useState<Money>()
 
   return (
     <div className="space-y-6">
 
       {/* Ordenar */}
       <div className="flex justify-end">
-        <select className="w-60 rounded-lg border border-gray-300 px-4 py-2 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-200">
-          <option value="">Ordenar por dinero</option>
-          <option value="desc">Mayor a menor</option>
-          <option value="asc">Menor a mayor</option>
-        </select>
+        <FilterMoney />
       </div>
 
-      {/* Tabla */}
       <div className="overflow-x-auto rounded-xl border border-gray-200">
         <table className="min-w-full">
 
