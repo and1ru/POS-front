@@ -5,18 +5,12 @@ import { styles } from "../../helper/style";
 
 export const Sell = () => {
   return (
-    // 1. Contenedor Flexbox principal con h-screen opcional para ocupar toda la altura
     <div className="flex min-h-screen bg-gray-50">
-      
-      {/* 2. Columna Izquierda: El carrito con un ancho fijo (ej. w-80 o w-1/4) */}
       <div className="w-80 h-screen border-r border-gray-200 bg-white p-4">
         <Cart />
       </div>
-
-      {/* 3. Columna Derecha: El contenido principal que toma el resto del espacio (flex-1) */}
       <main className="flex-1 p-6 overflow-y-auto">
         <h1 className={styles.titulos}>VENTA</h1>
-        
         <form action="" className="flex justify-center w-full py-4 bg-transparent">
           <div className="relative w-full max-w-md px-4">
             <input
@@ -26,7 +20,6 @@ export const Sell = () => {
             />
           </div>
         </form>
-
         <section className="mt-10 grid gap-5 grid-cols-2 xl:grid-cols-4">
           <ProductSell />
           <ProductSell />
@@ -42,7 +35,6 @@ export const Sell = () => {
           <ProductSell />
         </section>
       </main>
-
     </div>
   );
 };

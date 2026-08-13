@@ -13,7 +13,6 @@ export const ConfirmSaleProduct = ({image,name,price,quantity,}: ConfirmSaleProd
                 <h3 className="truncate text-sm font-semibold text-gray-900">
                     {name}
                 </h3>
-
                 <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
                     <p className="text-gray-500">
                         Precio:
@@ -21,7 +20,6 @@ export const ConfirmSaleProduct = ({image,name,price,quantity,}: ConfirmSaleProd
                             ${price}
                         </span>
                     </p>
-
                     <p className="text-gray-500">
                         Cantidad:
                         <span className="ml-1 font-semibold text-gray-800">
@@ -30,17 +28,14 @@ export const ConfirmSaleProduct = ({image,name,price,quantity,}: ConfirmSaleProd
                     </p>
                 </div>
             </div>
-
             <div className="shrink-0 text-right">
                 <p className="text-xs font-medium uppercase tracking-wide text-gray-400">
                     Total
                 </p>
-
                 <p className="mt-1 text-lg font-bold text-gray-900">
                     ${price * quantity}
                 </p>
             </div>
-
         </div>
     )
 }

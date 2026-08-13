@@ -27,7 +27,7 @@ export const CreateBranch = () => {
            <Input control={control} label="Address" name="address" type="text" error={errors.address} />
            
            <button type="submit" className={styles.button}>
-                Create Branch
+              Create Branch
            </button>
          </form>
        </div>

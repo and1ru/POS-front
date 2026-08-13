@@ -4,8 +4,6 @@ export const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-50/50 p-6 sm:p-8 text-gray-800">
-      
-      {/* Encabezado Principal */}
       <header className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-gray-100 pb-5">
         <div>
           <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">
@@ -15,18 +13,12 @@ export const Dashboard = () => {
             Bienvenido de vuelta a tu panel de control.
           </p>
         </div>
-        
-        {/* Badge de Rol / Ubicación */}
         <div className="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-xl text-sm font-semibold self-start sm:self-auto shadow-sm border border-indigo-100">
           <span className="w-2 h-2 rounded-full bg-indigo-500 animate-pulse" />
           Administrador — Monterrey
         </div>
       </header>
-
-      {/* Sección de Tarjetas / Grid */}
       <main className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        
-        {/* Tarjeta de Ventas */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between transition-all hover:shadow-md">
           <div>
             <div className="flex items-center justify-between mb-4">
@@ -45,8 +37,6 @@ export const Dashboard = () => {
             Actualizado en tiempo real
           </div>
         </div>
-
-        {/* Tarjeta de Notificaciones */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col transition-all hover:shadow-md">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-sm font-bold uppercase tracking-wider text-gray-400">
@@ -54,8 +44,6 @@ export const Dashboard = () => {
             </h2>
             <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
           </div>
-          
-          {/* Lista de alertas simuladas para darle vida */}
           <div className="flex-1 flex flex-col gap-3 justify-center">
             <div className="flex gap-3 items-start p-2.5 bg-amber-50/60 rounded-xl border border-amber-100/50">
               <span className="text-base">⚠️</span>
@@ -71,7 +59,6 @@ export const Dashboard = () => {
             </div>
           </div>
         </div>
-
       </main>
     </div>
   );

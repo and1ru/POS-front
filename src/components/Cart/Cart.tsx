@@ -4,15 +4,11 @@ import { CartProduct } from "../CartProduct/CartProduct";
 export const Cart = () => {
   return (
     <aside className="flex flex-col h-[calc(100vh-3rem)] max-h-screen">
-      
-      {/* Encabezado del carrito */}
       <div className="pb-4 border-b border-gray-100">
         <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
           <span>🛒</span> Carrito de Productos
         </h2>
       </div>
-
-      {/* Lista de productos con scroll independiente si hay muchos */}
       <div className="flex-1 overflow-y-auto py-4 space-y-3 pr-1 custom-scrollbar">
         <CartProduct />
         <CartProduct />
@@ -21,8 +17,6 @@ export const Cart = () => {
         <CartProduct />
         <CartProduct />
       </div>
-
-      {/* Resumen del total y botón de compra fijados abajo */}
       <div className="pt-4 border-t border-gray-200 bg-white">
         <div className="flex justify-between items-center mb-4">
           <p className="text-sm font-medium text-gray-500 uppercase tracking-wider">
@@ -37,7 +31,6 @@ export const Cart = () => {
           Confirmar Compra
         </Link>
       </div>
-
     </aside>
   );
 };

@@ -4,21 +4,14 @@ type PaymentMethod = "cash" | "transfer" | "mix"
 type SaleStatus = "pending" | "done"
 
 export const SummarySale = () => {
-
-    // Mock
-    const [paymentMethod, setPaymentMethod] =
-        useState<PaymentMethod>("mix")
-
-    const status: SaleStatus = "done"
+    const [paymentMethod, setPaymentMethod] =useState<PaymentMethod>("cash")
+    const [status, setStatus] = useState<SaleStatus>("pending")
 
     return (
         <aside className="h-fit rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-
             <h2 className="text-lg font-semibold text-gray-900">
                 Resumen de compra
             </h2>
-
-            {/* Total */}
             <div className="mt-6 flex items-end justify-between border-b border-gray-100 pb-5">
                 <span className="text-sm font-medium text-gray-500">
                     Total
@@ -28,16 +21,11 @@ export const SummarySale = () => {
                     $185.50
                 </span>
             </div>
-
-            {/* Método de pago */}
             <div className="mt-6">
                 <label className="mb-3 block text-sm font-semibold text-gray-700">
                     Método de pago
                 </label>
-
                 <div className="grid grid-cols-3 gap-2">
-
-                    {/* Efectivo */}
                     <button
                         type="button"
                         onClick={() => setPaymentMethod("cash")}
@@ -49,8 +37,6 @@ export const SummarySale = () => {
                     >
                         Efectivo
                     </button>
-
-                    {/* Transferencia */}
                     <button
                         type="button"
                         onClick={() => setPaymentMethod("transfer")}
@@ -62,8 +48,6 @@ export const SummarySale = () => {
                     >
                         Transferencia
                     </button>
-
-                    {/* Mix */}
                     <button
                         type="button"
                         onClick={() => setPaymentMethod("mix")}
@@ -75,27 +59,20 @@ export const SummarySale = () => {
                     >
                         Mix
                     </button>
-
                 </div>
             </div>
 
-            {/* Pago mixto */}
             {paymentMethod === "mix" && (
                 <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50 p-4">
-
                     <div className="space-y-4">
-
-                        {/* Efectivo */}
                         <div>
                             <label className="mb-2 block text-sm font-medium text-gray-700">
                                 Efectivo
                             </label>
-
                             <div className="relative">
                                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-400">
                                     $
                                 </span>
-
                                 <input
                                     type="number"
                                     placeholder="0.00"
@@ -104,18 +81,14 @@ export const SummarySale = () => {
                                 />
                             </div>
                         </div>
-
-                        {/* Transferencia */}
                         <div>
                             <label className="mb-2 block text-sm font-medium text-gray-700">
                                 Transferencia
                             </label>
-
                             <div className="relative">
                                 <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-400">
                                     $
                                 </span>
-
                                 <input
                                     type="number"
                                     placeholder="0.00"
@@ -126,20 +99,15 @@ export const SummarySale = () => {
                         </div>
 
                     </div>
-
-                    {/* Información del pago */}
                     <div className="mt-5 border-t border-gray-200 pt-4">
-
                         <div className="flex items-center justify-between text-sm">
                             <span className="text-gray-500">
                                 Total ingresado
                             </span>
-
                             <span className="font-semibold text-gray-800">
                                 $185.50
                             </span>
                         </div>
-
                         <div className="mt-2 flex items-center justify-between text-sm">
                             <span className="text-gray-500">
                                 Estado
@@ -149,13 +117,9 @@ export const SummarySale = () => {
                                 Completo
                             </span>
                         </div>
-
                     </div>
-
                 </div>
             )}
-
-            {/* Información para pagos no mixtos */}
             {paymentMethod !== "mix" && (
                 <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50 p-4">
 
@@ -184,7 +148,6 @@ export const SummarySale = () => {
                 </div>
             )}
 
-            {/* Estado de la venta */}
             {status === "done" && (
                 <div className="mt-6 rounded-xl border border-green-200 bg-green-50 p-4">
 
@@ -205,10 +168,7 @@ export const SummarySale = () => {
                             </p>
                         </div>
                     </div>
-
-                    {/* Acciones */}
                     <div className="mt-4 grid grid-cols-2 gap-3">
-
                         <button
                             type="button"
                             className="flex items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm font-semibold text-gray-700 transition hover:border-gray-300 hover:bg-gray-50"
@@ -216,30 +176,25 @@ export const SummarySale = () => {
                             <span>🖨️</span>
                             Imprimir factura
                         </button>
-
                         <button
-                            type="button"
+                            type="button"   
                             className="flex items-center justify-center gap-2 rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm font-semibold text-gray-700 transition hover:border-gray-300 hover:bg-gray-50"
                         >
                             <span>✉️</span>
                             Enviar por correo
                         </button>
-
                     </div>
-
                 </div>
             )}
-
-            {/* Confirmar */}
             {status !== "done" && (
                 <button
+                    onClick={() => setStatus("done")}
                     type="button"
                     className="mt-6 w-full rounded-xl bg-indigo-600 px-4 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 active:scale-[0.99]"
                 >
                     Confirmar compra
                 </button>
             )}
-
         </aside>
     )
 }

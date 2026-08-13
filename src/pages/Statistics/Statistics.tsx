@@ -62,10 +62,7 @@ export const Statistics = () => {
           <FilterDate />
         </form>
       </section>
-
-      {/* Resultado */}
       <section className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-
         {entity === "" && (
           <div className="text-center py-20 text-gray-400">
             Selecciona una entidad para visualizar las estadísticas.
@@ -75,7 +72,6 @@ export const Statistics = () => {
         {entity === "cashier" && <CashierTable />}
         {entity === "product" && <ProductTable />}
       </section>
-
     </main>
   );
 };

@@ -15,15 +15,11 @@ export const CartProduct = () => {
 
   return (
     <div className="flex items-center gap-3 p-3 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-200">
-      
-      {/* Imagen del producto */}
       <img 
         src="https://via.placeholder.com/64" 
         alt="Producto" 
         className="w-16 h-16 object-cover rounded-lg bg-gray-100"
       />
-
-      {/* Información del producto (ocupa el espacio central) */}
       <div className="flex-1 min-w-0">
         <p className="text-sm font-semibold text-gray-800 truncate">
           Nombre del Producto
@@ -31,14 +27,10 @@ export const CartProduct = () => {
         <p className="text-xs text-gray-500 font-medium mt-0.5">
           Precio: <span className="text-indigo-600 font-semibold">$0.00</span>
         </p>
-        
-        {/* Botón Eliminar */}
         <button className="text-xs text-red-500 hover:text-red-700 font-medium mt-2 transition-colors duration-150 block">
           Eliminar
         </button>
       </div>
-
-      {/* Contador de cantidad (lado derecho) */}
       <div className="flex flex-col items-center gap-1 bg-gray-50 rounded-lg p-1 border border-gray-100">
         <button 
           onClick={handleIncrement}
@@ -57,7 +49,6 @@ export const CartProduct = () => {
           -
         </button>
       </div>
-
     </div>
   );
 };
