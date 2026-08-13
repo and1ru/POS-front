@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CartProduct } from "../CartProduct/CartProduct";
 
 export const Cart = () => {
@@ -32,9 +33,9 @@ export const Cart = () => {
           </p>
         </div>
         
-        <button className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-xl shadow-md hover:shadow-indigo-200 transition-all duration-200 active:scale-[0.98]">
+        <Link to="/private/confirmSale" replace className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-xl shadow-md hover:shadow-indigo-200 transition-all duration-200 active:scale-[0.98]">
           Confirmar Compra
-        </button>
+        </Link>
       </div>
 
     </aside>

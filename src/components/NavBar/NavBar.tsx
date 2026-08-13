@@ -34,6 +34,7 @@ export const NavBar = () => {
         <NavBarLi address="/private/history" title="History" />
         <NavBarLi address="/private/statistics" title="statistics" />
         <NavBarLi address="/private/create-product" title="Create Product" />
+        <NavBarLi address="/private/createBranch" title="Create Branch" />
         <NavBarLi address="/private/manage-employees" title="Manage Employees" />
 
         {/* Empujamos el botón "Salir" al fondo si hay espacio suficiente */}

@@ -3,6 +3,7 @@ import { registerSchema, type registerType } from "../../schemas/register-shema"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { styles } from "../../helper/style"; // Importamos tus estilos base
 import { Input } from "../../components/Input/Input";
+import { Link } from "react-router-dom";
 
 export const Register = () => {
   const { control, handleSubmit, formState: { errors } } = useForm<registerType>({
@@ -70,9 +71,9 @@ export const Register = () => {
             error={errors.confirmPassword}
           />
 
-            <a href="#" className="text-xs font-semibold text-indigo-600 hover:text-indigo-500 transition-colors">
+            <Link to="/login" replace className="text-xs font-semibold text-indigo-600 hover:text-indigo-500 transition-colors">
               ¿do you have account? login
-            </a>
+            </Link>
 
           {/* Botón Principal */}
           <button type="submit" className={`${styles.button} mt-3`}>

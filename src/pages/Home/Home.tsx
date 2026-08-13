@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export const Home = () => {
   return (
     <>
@@ -22,9 +24,12 @@ export const Home = () => {
           </p>
 
           <div className="flex gap-5 mt-10">
-            <button className="bg-blue-600 px-8 py-3 rounded-xl text-lg font-semibold hover:bg-blue-500 duration-200">
-              Empezar ahora
-            </button>
+            <Link to="/login">
+              <button className="cursor-pointer bg-blue-600 px-8 py-3 rounded-xl text-lg font-semibold hover:bg-blue-500 duration-200">
+                Empezar ahora
+              </button>
+            </Link>
+
           </div>
         </section>
 

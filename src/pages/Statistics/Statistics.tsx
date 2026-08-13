@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BranchTable } from "../../components/BranchTable/BranchTable";
 import { CashierTable } from "../../components/CashierTable/CashierTable";
 import { ProductTable } from "../../components/ProductTable/ProductTable";
+import { useSearchParams } from "react-router-dom";
 
 type Entity = "product" | "cashier" | "branch" | "";
 type DateFilter = "today" | "7 days" | "30 days" | "1 year" | "all";
 
 export const Statistics = () => {
   const [entity, setEntity] = useState<Entity>("");
-  const [_date, setDate] = useState<DateFilter>("all");
+  const [date, setDate] = useState<DateFilter>("all");
+  const [name, setName] = useState("")
+  const [_searchParams,setSearchParams] = useSearchParams()
 
   const handleEntidad = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setEntity(e.target.value as Entity);
@@ -17,6 +20,15 @@ export const Statistics = () => {
   const handleDate = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setDate(e.target.value as DateFilter);
   };
+
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    setName(value)
+  }
+
+  useEffect(() => {
+    setSearchParams({entity, date, name})
+  }, [entity, date, name])
 
   return (
     <main className="max-w-7xl mx-auto p-6">
@@ -35,6 +47,8 @@ export const Statistics = () => {
         <form className="grid grid-cols-1 md:grid-cols-3 gap-4">
 
           <input
+          onChange={handleInput}
+          value={name}
             type="text"
             placeholder="Buscar..."
             className="border border-gray-300 rounded-lg px-4 py-2.5 outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500"

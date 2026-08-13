@@ -12,7 +12,7 @@ export const NavBarLi = ({ address, title }: Props) => {
   }
   return (
     <li
-      className="block font-medium text-xl w-full p-5 duration-200 cursor-pointer hover:text-2xl hover:bg-gray-200 "
+      className="block font-medium rounded-lg text-xl w-full p-5 duration-200 cursor-pointer hover:text-2xl hover:bg-gray-200 "
       onClick={handleClick}>
       {title}
     </li>

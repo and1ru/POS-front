@@ -10,6 +10,9 @@ import { Statistics } from '../pages/Statistics/Statistics'
 import { ManageEmployees } from '../pages/Employees/Employees'
 import { CreateProduct } from '../pages/CreateProduct/CreateProduct'
 import { Sell } from '../pages/Sell/Sell'
+import { NotFound } from '../pages/NotFound/NotFound'
+import { CreateBranch } from '../pages/CreateBranch/CreateBranch'
+import { ConfirmSale } from '../pages/ConfirmSale/ConfirmSale'
 
 export const router = createBrowserRouter([
     {
@@ -49,13 +52,29 @@ export const router = createBrowserRouter([
                 element: <ManageEmployees/>
             },
             {
+                path: "employee/:userId",
+                element: <></>
+            },
+            {
                 path: "create-product",
                 element: <CreateProduct/>
             },
             {
+                path: "createBranch",
+                element: <CreateBranch />
+            },
+            {
                 path: "sell",
                 element:<Sell/>
+            },
+            {
+                path: "confirmSale",
+                element: <ConfirmSale/>
             }
         ]
+    },
+    {
+        path: "*",
+        element: <NotFound/>
     }
 ])

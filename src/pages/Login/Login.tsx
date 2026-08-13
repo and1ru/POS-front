@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type loginType } from "../../schemas/login-shema";
 import { styles } from "../../helper/style";
 import { Input } from "../../components/Input/Input";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const { handleSubmit, control, formState: { errors } } = useForm<loginType>({
@@ -59,16 +60,15 @@ export const Login = () => {
             </a>
           </div>
           <div className="text-right -mt-2">
-            <a href="#" className="text-xs font-semibold text-indigo-600 hover:text-indigo-500 transition-colors">
+            <Link to="/register" replace className="text-xs font-semibold text-indigo-600 hover:text-indigo-500 transition-colors">
               ¿don't you have account? register
-            </a>
+            </Link>
           </div>
           {/* Botón Principal utilizando tu objeto de estilos */}
           <button type="submit" className={`${styles.button} mt-2`}>
             Ingresar al Sistema
           </button>
         </form>
-
       </div>
     </div>
   );

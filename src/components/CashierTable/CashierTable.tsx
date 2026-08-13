@@ -1,4 +1,9 @@
+import { useState } from "react";
+
+type Money = "asc" | "desc"
 export const CashierTable = () => {
+  const [money, setMoney] = useState<Money>()
+  
   return (
     <div className="space-y-6">
 
