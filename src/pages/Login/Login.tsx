@@ -4,8 +4,10 @@ import { loginSchema, type loginType } from "../../schemas/login-shema";
 import { styles } from "../../helper/style";
 import { Input } from "../../components/Input/Input";
 import { Link } from "react-router-dom";
+import { useLogin } from "../../customHooks/useLogin/useLogin";
 
 export const Login = () => {
+  const {login, loading, error } = useLogin()
   const { handleSubmit, control, formState: { errors } } = useForm<loginType>({
     defaultValues: {
       email: "",
@@ -16,7 +18,7 @@ export const Login = () => {
   });
 
   const handleForm: SubmitHandler<loginType> = (data) => {
-    console.log(data);
+    login(data)
   };
 
   return (
@@ -38,16 +40,13 @@ export const Login = () => {
               ¿Olvidaste tu contraseña?
             </Link>
           </div>
-          <div className="text-right -mt-2">
-            <Link to="/register" replace className="text-xs font-semibold text-indigo-600 hover:text-indigo-500 transition-colors">
-              ¿don't you have account? register
-            </Link>
-          </div>
+          { error?.status === 400 ? <p className="text-red-500">Credenciales invalidas</p> : null}
           <button type="submit" className={`${styles.button} mt-2`}>
             Ingresar al Sistema
           </button>
         </form>
       </div>
+      { loading ?? <p>loading</p> }
     </div>
   );
 };

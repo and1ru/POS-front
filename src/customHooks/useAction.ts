@@ -1,32 +1,30 @@
+import type { AxiosError, AxiosResponse } from "axios"
+import axios from "axios"
 import { useState } from "react"
-import type { AxiosResponse } from "axios"
 
-// dice que va a retornar la function
 interface UseActionResult<TResponse> {
-    // dice que puede ser de tipo generico o null
     data: TResponse | null
     loading: boolean
-    error: unknown
-    // action es una función genérica que recibe un parámetro body de tipo TBody y retorna una promesa que no devuelve ningún valor.
-    action: <TBody>(body: TBody) => Promise<void>
+    error: AxiosError |  null
+    action: (fn: () => Promise<AxiosResponse<TResponse>>) => Promise<void>
 }
 
-// fn es una función genérica que recibe un body de tipo TBody y retorna una Promise cuyo resultado es una AxiosResponse que contiene una respuesta de tipo TResponse
-export const useAction = <TResponse>(fn:<TBody>(body:TBody) => Promise<AxiosResponse<TResponse>>):UseActionResult<TResponse> => {
+export const useAction = <TResponse>(): UseActionResult<TResponse> => {
     const [data, setData] = useState<TResponse | null>(null)
     const [loading, setLoading] = useState<boolean>(false)
-    const [error, setError] = useState<unknown>(null)
+    const [error, setError] = useState<null | AxiosError>(null)
 
-    const action = async <TBody>(body:TBody) => {
+    const action = async (fn: () => Promise<AxiosResponse<TResponse>>): Promise<void> => {
         setLoading(true)
         setError(null)
         try {
-            const request = await fn(body)
+            const request = await fn()
             setData(request.data)
             console.log(request.data)
-        } catch (error) {
-            console.error(error)
-            setError(error)
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                setError(err)
+            }
         } finally {
             setLoading(false)
         }
