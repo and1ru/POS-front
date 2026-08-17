@@ -15,6 +15,7 @@ import { CreateBranch } from '../pages/CreateBranch/CreateBranch'
 import { ConfirmSale } from '../pages/ConfirmSale/ConfirmSale'
 import { ForgotPassword } from '../pages/ForgotPassoword/ForgotPassword'
 import { ResetPassword } from '../pages/ResetPassword/ResetPassword'
+import { CreateCompany } from '../pages/CreateCompany/CreateCompany'
 
 export const router = createBrowserRouter([
     {
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
             {
                 path: "confirmSale",
                 element: <ConfirmSale/>
+            },
+            {
+                path: "create-company",
+                element: <CreateCompany />
             }
         ]
     },

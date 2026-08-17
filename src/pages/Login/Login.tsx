@@ -3,11 +3,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type loginType } from "../../schemas/login-shema";
 import { styles } from "../../helper/style";
 import { Input } from "../../components/Input/Input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLogin } from "../../customHooks/useLogin/useLogin";
+import { useEffect } from "react";
 
 export const Login = () => {
-  const {login, loading, error } = useLogin()
+  const navigate = useNavigate()
+  const {login, loading, error, data } = useLogin()
   const { handleSubmit, control, formState: { errors } } = useForm<loginType>({
     defaultValues: {
       email: "",
@@ -17,9 +19,15 @@ export const Login = () => {
     resolver: zodResolver(loginSchema)
   });
 
-  const handleForm: SubmitHandler<loginType> = (data) => {
-    login(data)
+  const handleForm: SubmitHandler<loginType> = (body) => {
+    login(body)
   };
+
+  useEffect(()=> {
+    if(data?.success){
+      navigate("/private/dashboard", {replace:true})
+    }
+  },[data,])
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">

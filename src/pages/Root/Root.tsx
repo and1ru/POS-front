@@ -1,15 +1,28 @@
-import { Outlet, useNavigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { NavBar } from "../../components/NavBar/NavBar";
 import { Header } from "../../components/Header/Header";
 import { useAuth } from "../../customHooks/useAuth/useAuth";
+import { useAuthContext } from "../../context/authContext/authContext";
+import { useEffect } from "react";
 
 export const Root = () => {
   const { data, error, loading } = useAuth()
-  const navigate = useNavigate()
+  const { setAuthContext } = useAuthContext()
+
+  const execute = () => {
+    if(!data) return
+    setAuthContext({role:data.role, name:data.name})
+  }
+
+  useEffect(()=> {
+    execute()
+  },[data])
 
   if(loading) return <p>loading</p>
-  if(!data?.success) navigate("/login", {replace:true})
-  if(error) return <p>error</p>
+  if(data?.success === false || error) {
+    return <Navigate to="/login" replace/>
+  }
+
   return (
     <>
         <Header/>
