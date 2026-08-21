@@ -24,6 +24,7 @@ export const useAction = <TResponse>(): UseActionResult<TResponse> => {
         } catch (err) {
             if (axios.isAxiosError(err)) {
                 setError(err)
+                console.error(err)
             }
         } finally {
             setLoading(false)

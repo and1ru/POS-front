@@ -3,20 +3,24 @@ import { productSchema, type productType } from "../../schemas/product-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { styles } from "../../helper/style";
 import { Input } from "../../components/Input/Input";
+import { useCreateProduct } from "../../customHooks/useCreateProduct/useCreateProduct";
 
 export const CreateProduct = () => {
+  const { create } = useCreateProduct()
   const { handleSubmit, control, formState: { errors } } = useForm<productType>({
     defaultValues: {
       name: "",
-      price: 0,
-      stock: 0
     },
     mode: "onBlur",
     resolver: zodResolver(productSchema)
   });
 
-  const handleForm: SubmitHandler<productType> = (data) => {
-    console.log(data);
+  const handleForm: SubmitHandler<productType> = (body) => {
+    const formData = new FormData()
+    formData.append("name", body.name)
+    formData.append("image", body.image)
+
+    create(formData)
   };
 
   return (
@@ -26,8 +30,6 @@ export const CreateProduct = () => {
       <form className={styles.formulario} onSubmit={handleSubmit(handleForm)}>
         <Input control={control} label="Product Name" name="name" type="text" error={errors.name} />
         <Input control={control} label="Image" name="image" type="file" error={errors.image} />
-        <Input control={control} label="Price" name="price" type="number" error={errors.price} />
-        <Input control={control} label="Stock" name="stock" type="number" error={errors.stock} />
         
         <button type="submit" className={styles.button}>
           Crear Producto

@@ -7,8 +7,6 @@ const accepted_image_type = ["image/jpeg", "image/png", "image/webp", "image/jpg
 
 export const productSchema = z.object({
     name: z.string().min(1,"must be 1 lenght"),
-    price: z.number(),
-    stock: z.number(),
     // 1. dice que recibira un archivo
     // 2. dice cual es el tamaño maximo del archivo
     // 3. dice que formato son permitidos las imagenes

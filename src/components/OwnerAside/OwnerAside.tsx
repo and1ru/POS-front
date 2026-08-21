@@ -28,6 +28,7 @@ export const OwnerNav = () => {
 
         <NavBarLi address="/private/dashboard" title="Dashboard" />
         <NavBarLi address="/private/history" title="History" />
+        <NavBarLi address="/private/inventory" title="Inventory" />
         <NavBarLi address="/private/statistics" title="statistics" />
         <NavBarLi address="/private/create-product" title="Create Product" />
         <NavBarLi address="/private/createBranch" title="Create Branch" />
