@@ -22,7 +22,7 @@ export const FilterBranch = () => {
         >
             <option value="">Seleccionar sede</option>
             { data !== null && data.data.map((branch) => (
-                <option key={branch.branch_id} value={branch.branch_id}>{branch.branch_name}</option>
+                <option key={branch.id} value={branch.id}>{branch.name}</option>
             ))}
         </select>
     )

@@ -40,7 +40,7 @@ export const Register = () => {
             <Link to="/login" replace className="text-xs font-semibold text-indigo-600 hover:text-indigo-500 transition-colors">
               ¿do you have account? login
             </Link>
-          <button type="submit" className={`${styles.button} mt-3`}>
+          <button className={`${styles.button} mt-3`}>
             Registrarse
           </button>
         </form>

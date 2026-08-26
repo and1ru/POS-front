@@ -2,11 +2,15 @@ import { useGet } from "../useGet"
 
 type role = "root" | "admin" | "owner"
 
+interface Result {
+    name:string;
+    role:role
+}
+
 interface response {
     message:string;
     success:boolean;
-    role:role
-    name: string;
+    result: Result
 }
 
 export const useAuth = () => {

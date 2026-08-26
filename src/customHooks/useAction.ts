@@ -7,6 +7,7 @@ interface UseActionResult<TResponse> {
     loading: boolean
     error: AxiosError |  null
     action: (fn: () => Promise<AxiosResponse<TResponse>>) => Promise<void>
+    reset: () => void
 }
 
 export const useAction = <TResponse>(): UseActionResult<TResponse> => {
@@ -31,5 +32,10 @@ export const useAction = <TResponse>(): UseActionResult<TResponse> => {
         }
     }
 
-    return { data, loading, error, action }
+    const reset = () => {
+        setData(null)
+        setError(null)
+    }
+
+    return { data, loading, error, action, reset }
 }

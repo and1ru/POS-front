@@ -8,10 +8,10 @@ interface Response {
 }
 
 export const useCreateBranch = () => {
-    const { action, loading, error, data } = useAction<Response>()
+    const { action, loading, error, data, reset } = useAction<Response>()
     const create = (body:branchType) => {
         action(() => apiClient.post("branch", body))
     }
 
-    return { create, loading, error, data }
+    return { create, loading, error, data, resetRequest:reset }
 }

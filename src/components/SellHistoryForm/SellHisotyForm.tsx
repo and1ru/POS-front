@@ -4,7 +4,7 @@ import { FilterDate } from "../FilterDate/FilterDate";
 import { FilterBranch } from "../FilterBranch/FilterBranch";
 
 export const SellHisotyForm = () => {
-  const [searchParams, setSearchParams] = useSearchParams()
+  const [_searchParams, setSearchParams] = useSearchParams()
   const [saleId, setSaleId] = useState("")
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {

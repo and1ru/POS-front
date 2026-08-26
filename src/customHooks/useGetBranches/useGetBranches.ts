@@ -1,11 +1,9 @@
 import { useGet } from "../useGet"
 
 interface branches {
-    branch_id: number,
-    company_id: number,
-    branch_name: string,
-    branch_address: string,
-    branch_city: string
+    name:string;
+    id:number;
+    city:string
 }
 
 interface Response {

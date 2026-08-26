@@ -1,5 +1,7 @@
+import { useAuthContext } from "../../context/authContext/authContext";
+
 export const Dashboard = () => {
-  // Simulación de datos formateados
+  const { authContext:{ name }} = useAuthContext()
   const ventasHoy = "123,456,789.99";
 
   return (
@@ -7,7 +9,7 @@ export const Dashboard = () => {
       <header className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-gray-100 pb-5">
         <div>
           <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">
-            Hola, Andrés 👋
+            Hola, {name} 👋
           </h1>
           <p className="text-sm text-gray-500 mt-1">
             Bienvenido de vuelta a tu panel de control.

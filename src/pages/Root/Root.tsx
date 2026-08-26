@@ -11,7 +11,7 @@ export const Root = () => {
 
   const execute = () => {
     if(!data) return
-    setAuthContext({role:data.role, name:data.name})
+    setAuthContext({role:data.result.role, name:data.result.name})
   }
 
   useEffect(()=> {
