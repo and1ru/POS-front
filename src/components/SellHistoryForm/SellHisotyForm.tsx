@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { FilterDate } from "../FilterDate/FilterDate";
-import { FilterBranch } from "../FilterBranch/FilterBranch";
 
 export const SellHisotyForm = () => {
   const [_searchParams, setSearchParams] = useSearchParams()
@@ -29,7 +28,6 @@ export const SellHisotyForm = () => {
         </div>
         <div className="flex w-full md:w-auto gap-3">
           <FilterDate />
-          <FilterBranch />
         </div>
       </form>
     </section>

@@ -33,6 +33,7 @@ export const OwnerNav = () => {
         <NavBarLi address="/private/create-product" title="Create Product" />
         <NavBarLi address="/private/createBranch" title="Create Branch" />
         <NavBarLi address="/private/manage-employees" title="Manage Employees" />
+        <NavBarLi address="/private/hire" title="Hire" />
 
           <LogOut/>
       </ul>

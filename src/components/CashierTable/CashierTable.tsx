@@ -1,4 +1,3 @@
-import { FilterBranch } from "../FilterBranch/FilterBranch";
 import { FilterMoney } from "../FilterMoney/FilterMoney";
 
 export const CashierTable = () => {
@@ -6,7 +5,6 @@ export const CashierTable = () => {
     <div className="space-y-6">
 
       <form className="flex flex-col md:flex-row gap-4 md:justify-end">
-        <FilterBranch />
         <FilterMoney />
       </form>
 

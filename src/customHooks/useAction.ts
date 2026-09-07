@@ -8,20 +8,24 @@ interface UseActionResult<TResponse> {
     error: AxiosError |  null
     action: (fn: () => Promise<AxiosResponse<TResponse>>) => Promise<void>
     reset: () => void
+    success: boolean
 }
 
 export const useAction = <TResponse>(): UseActionResult<TResponse> => {
     const [data, setData] = useState<TResponse | null>(null)
     const [loading, setLoading] = useState<boolean>(false)
     const [error, setError] = useState<null | AxiosError>(null)
+    const [success, setSuccess] = useState(false)
 
     const action = async (fn: () => Promise<AxiosResponse<TResponse>>): Promise<void> => {
         setLoading(true)
         setError(null)
+        setSuccess(false)
         try {
             const request = await fn()
             setData(request.data)
             console.log(request.data)
+            setSuccess(true)
         } catch (err) {
             if (axios.isAxiosError(err)) {
                 setError(err)
@@ -37,5 +41,5 @@ export const useAction = <TResponse>(): UseActionResult<TResponse> => {
         setError(null)
     }
 
-    return { data, loading, error, action, reset }
+    return { data, loading, error, action, reset, success }
 }

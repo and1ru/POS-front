@@ -2,9 +2,11 @@ import { useNavigate } from "react-router-dom";
 
 interface Props {
   id: number;
+  name:string;
+  role:string
 }
 
-export const EmployeeCard = ({ id }: Props) => {
+export const EmployeeCard = ({ id, name, role }: Props) => {
   const navegar = useNavigate();
   
   function handleClick() {
@@ -15,15 +17,11 @@ export const EmployeeCard = ({ id }: Props) => {
     <div className="w-80 bg-white border border-gray-100 rounded-2xl shadow-sm p-4 flex flex-col justify-between transition-all duration-200 hover:shadow-md hover:border-gray-200">
       <div className="flex flex-col items-center text-center gap-1.5">
         <h3 className="font-bold text-gray-800 text-base tracking-tight truncate w-full capitalize">
-          Nombre
+          { name }
         </h3>
         <p className="text-xs font-medium text-gray-400 truncate w-full">
-          Rol — Sede
+          { role } — Sede
         </p>
-        <div className="inline-flex items-center gap-1.5 bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full text-[11px] font-bold mt-1">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          Online
-        </div>
       </div>
       <button 
         onClick={handleClick}

@@ -8,10 +8,10 @@ interface Response {
 }
 
 export const useCreateCompany = () => {
-    const { action, data, error, loading} = useAction<Response>()
+    const { action, data, error, loading, success} = useAction<Response>()
     const create = (body:companyType) => {
         action(() => apiClient.post("company", body))
     }
 
-    return {create, data,error,loading}
+    return {create, data,error,loading, success}
 }

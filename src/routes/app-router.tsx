@@ -16,6 +16,7 @@ import { ConfirmSale } from '../pages/ConfirmSale/ConfirmSale'
 import { ForgotPassword } from '../pages/ForgotPassoword/ForgotPassword'
 import { ResetPassword } from '../pages/ResetPassword/ResetPassword'
 import { CreateCompany } from '../pages/CreateCompany/CreateCompany'
+import { Hire } from '../pages/Hire/Hire'
 
 export const router = createBrowserRouter([
     {
@@ -85,6 +86,10 @@ export const router = createBrowserRouter([
             {
                 path: "create-company",
                 element: <CreateCompany />
+            },
+            {
+                path: "hire",
+                element: <Hire />
             }
         ]
     },

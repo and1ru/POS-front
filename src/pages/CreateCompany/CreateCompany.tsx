@@ -4,10 +4,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { styles } from "../../helper/style";
 import { Input } from "../../components/Input/Input";
 import { useCreateCompany } from "../../customHooks/useCreateCompany/useCreateCompany";
+import { SuccessMessage } from "../../components/SuccessMessage/SuccessMessage";
+import { useEffect, useState } from "react";
+import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 
 export const CreateCompany = () => {
-  const { create, data, error, loading } = useCreateCompany()
-   const { handleSubmit, control, formState: { errors } } = useForm<companyType>({
+  const { create, success, error } = useCreateCompany()
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false) 
+  const [isErrorOpen, setIsErrorOpen] = useState(false) 
+   const { handleSubmit, control, formState: { errors }, reset } = useForm<companyType>({
        defaultValues: {
         companyName: "",
         ownerName: "",
@@ -20,11 +25,27 @@ export const CreateCompany = () => {
      });
    
      const handleForm: SubmitHandler<companyType> = (body) => {
-       console.log(body);
        create(body)
      };
+
+     useEffect(()=> {
+      if(success){
+        setIsSuccessOpen(true)
+        reset()
+      }
+      if(error){
+        setIsErrorOpen(true)
+      }
+     },[success, error])
    
      return (
+      <>
+      <SuccessMessage open={isSuccessOpen}>
+        se creo con exito la compañia
+      </SuccessMessage>
+      <ErrorMessage open={isErrorOpen}>
+        error al intentar crear la compañia
+      </ErrorMessage>
        <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
          <h1 className={styles.titulos}>CREATE NEW COMPANY</h1>
          
@@ -39,6 +60,8 @@ export const CreateCompany = () => {
               Create Company
            </button>
          </form>
-       </div>
+       </div>      
+      </>
+
      );
 };

@@ -4,7 +4,7 @@ export const employeeSchema = z.object({
     name: z.string(),
     email: z.email(),
     password: z.string(),
-    role: z.enum(["admin", "cashier"]),
+    role: z.enum(["admin", "cashier", ""]),
     branch: z.string()
 })
 

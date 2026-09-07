@@ -9,7 +9,7 @@ interface branches {
 interface Response {
     message: string;
     status: boolean
-    data: branches[]
+    result: branches[]
 }
 
 export const useGetBranches = () => {
