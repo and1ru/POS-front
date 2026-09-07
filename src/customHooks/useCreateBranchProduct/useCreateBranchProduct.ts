@@ -1,4 +1,3 @@
-import type { branchType } from "../../schemas/branch-schema";
 import { apiClient } from "../apiClient";
 import { useAction } from "../useAction"
 
@@ -7,9 +6,15 @@ interface Response {
     success:boolean;
 }
 
-export const useCreateBranch = () => {
+interface Body {
+    productId: number;
+    price: number;
+    stock: number;
+}
+
+export const useCreateBranchProduct = () => {
     const { action, loading, error, data, reset } = useAction<Response>()
-    const create = (body:branchType) => {
+    const create = (body:Body) => {
         action(() => apiClient.post("branch-product", body))
     }
 

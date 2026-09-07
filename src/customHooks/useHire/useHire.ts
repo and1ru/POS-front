@@ -9,11 +9,11 @@ interface Response {
 }
 
 export const useHire = () => {
-    const { action,data, loading, error } = useAction<Response>()
+    const { action,data, loading, error, success } = useAction<Response>()
 
     const hire = async (body:employeeType) => {
         await action(() => apiClient.post("hire", body))
     }
 
-    return { hire, data, loading, error }
+    return { hire, data, loading, error, success }
 }

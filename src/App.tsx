@@ -7,10 +7,10 @@
 // cambiar el dashboard del owner
 // obtener el historial de ventas
 // obtener todos los productos de la company ✔
-// cuando se cree un product que se reinicie el formulario si se creo correctamente
+// cuando se cree un product que se reinicie el formulario si se creo correctamente ✔
 // cambiar el input
 // crear un input especifico para los files
-// agregar comentarios a formulario de crear branch
+// agregar comentarios a formulario de crear branch ✔
 // hacer que los filtros funcionen en manage employees
 // mejorar los estilos y agregar comentarios de error en input de hire
 

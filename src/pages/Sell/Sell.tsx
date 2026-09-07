@@ -1,9 +1,11 @@
 import { Cart } from "../../components/Cart/Cart";
 import { ProductSell } from "../../components/ProductSell/ProductSell";
+import { useInventory } from "../../customHooks/useInventory/useInventory";
 import { styles } from "../../helper/style";
 
 
 export const Sell = () => {
+  const { data } = useInventory()
   return (
     <div className="flex min-h-screen bg-gray-50">
       <div className="w-80 h-screen border-r border-gray-200 bg-white p-4">
@@ -21,18 +23,7 @@ export const Sell = () => {
           </div>
         </form>
         <section className="mt-10 grid gap-5 grid-cols-2 xl:grid-cols-4">
-          <ProductSell />
-          <ProductSell />
-          <ProductSell />
-          <ProductSell />          
-          <ProductSell />
-          <ProductSell />          
-          <ProductSell />
-          <ProductSell />          
-          <ProductSell />
-          <ProductSell />          
-          <ProductSell />
-          <ProductSell />
+          {data?.result.map( product => <ProductSell name={product.name} price={product.price} stock={product.stock} img={product.image_url} key={product.id} /> )}
         </section>
       </main>
     </div>

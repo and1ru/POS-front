@@ -4,6 +4,9 @@ interface Product {
     id:number;
     name:string;
     image_url:string
+    price:number;
+    stock:number
+    is_in_branch:number
 }
 
 interface Response {
