@@ -1,32 +1,34 @@
 import { useEffect, useRef, type ReactNode } from "react"
 
 interface Props {
-    open: boolean;
+    successfully: boolean;
     children: ReactNode;
 }
 
-export const SuccessMessage = ({open, children}:Props) => {
+export const SuccessMessage = ({ successfully, children }:Props) => {
     const dialogRef = useRef<null | HTMLDialogElement>(null)
 
-    const handleClose = () => {
-        if(open){
-            dialogRef.current?.close()
-        }
+    const close = () => {
+        dialogRef.current?.close()
+    }
+
+    const open = () => {
+        dialogRef.current?.showModal()
     }
 
     useEffect(()=> {
-        if(open){
-            dialogRef.current?.showModal()
+        if(successfully){
+            open()
         }
-    },[open])
+    },[successfully])
 
     return(
         <dialog ref={dialogRef} className="m-auto px-4 py-10 rounded-xl w-70">
-            <div className="border-6 border-green-600 rounded-full w-30 h-30 flex justify-center items-center mx-auto">
-                <p className="text-5xl">✔</p>
+            <div className="border-6 border-green-600 rounded-full w-30 h-30 flex justify-center items-center mx-auto bg-green-100 text-green-600 font-black ">
+                <p className="text-7xl">✓</p>
             </div>
-            <p className="text-green-700 my-5 text-center">{children}</p>
-            <button onClick={handleClose} className="bg-red-500 w-full p-2 rounded-lg text-white">Cerrar</button>
+            <p className="text-green-700 my-5 text-center font-bold">{children}</p>
+            <button onClick={close} className="bg-green-500 w-full p-2 rounded-lg text-white outline-none hover:bg-green-600">Close</button>
         </dialog>
     )
 }

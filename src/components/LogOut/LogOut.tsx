@@ -9,7 +9,7 @@ export const LogOut = () => {
     }
 
   return (
-    <div className="mt-auto pt-4" onClick={handleClick}>
+    <div className="text-center content-center mt-auto bg-red-500 rounded-lg hover:bg-red-600" onClick={handleClick}>
         <NavBarLi address="/login" title="Logout" />
     </div>
   );

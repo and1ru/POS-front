@@ -5,8 +5,8 @@ const max_file_size = 5 * 1024 * 1024
 // define que tipos se aceptaran
 const accepted_image_type = ["image/jpeg", "image/png", "image/webp", "image/jpg"]
 
-export const productSchema = z.object({
-    name: z.string().min(1,"must be 1 lenght"),
+export const createProductSchema = z.object({
+    name: z.string().min(1,"Product Name is required"),
     // 1. dice que recibira un archivo
     // 2. dice cual es el tamaño maximo del archivo
     // 3. dice que formato son permitidos las imagenes
@@ -16,4 +16,4 @@ export const productSchema = z.object({
             .refine((file) => accepted_image_type.includes(file.type), "Solo se permiten formatos .jpg, .jpeg, .png y .webp")
 })
 
-export type productType = z.infer<typeof productSchema>
+export type createProductType = z.infer<typeof createProductSchema>

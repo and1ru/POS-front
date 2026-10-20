@@ -6,6 +6,7 @@ import { Input } from "../../components/Input/Input";
 import { Link, useNavigate } from "react-router-dom";
 import { useLogin } from "../../customHooks/useLogin/useLogin";
 import { useEffect } from "react";
+import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 
 export const Login = () => {
   const navigate = useNavigate()
@@ -27,34 +28,36 @@ export const Login = () => {
     if(data?.success){
       navigate("/private/dashboard", {replace:true})
     }
-  },[data,])
+  },[data])
 
   return (
+    <>
+    { error && <ErrorMessage open={true}>¡ops! Something went wrong trying to login</ErrorMessage>}
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full mx-auto bg-white p-8 rounded-2xl shadow-md border border-gray-100">
         <div className="mb-8 text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 tracking-tight">
-            Iniciar Sesión
+            Login
           </h2>
-          <p className="text-sm text-gray-500 mt-2">
-            Ingresa tus credenciales para acceder al panel
-          </p>
         </div>
         <form onSubmit={handleSubmit(handleForm)} className="flex flex-col gap-5">
           <Input control={control} error={errors.email} label="Correo Electrónico" name="email" type="email"/>
           <Input control={control} error={errors.password} label="Contraseña" name="password" type="password"/>
           <div className="text-right -mt-2">
             <Link to="/forgotPassword" replace className="text-xs font-semibold text-indigo-600 hover:text-indigo-500 transition-colors">
-              ¿Olvidaste tu contraseña?
+              did you forget your password?
             </Link>
           </div>
-          { error?.status === 400 ? <p className="text-red-500">Credenciales invalidas</p> : null}
-          <button type="submit" className={`${styles.button} mt-2`}>
-            Ingresar al Sistema
+          <button 
+              type="submit" 
+              disabled={loading}
+              className={`${styles.button} ${ loading && "cursor-not-allowed" } cursor-pointer mt-2`}>
+            log in
           </button>
         </form>
       </div>
-      { loading ?? <p>loading</p> }
     </div>
+    </>
+    
   );
 };

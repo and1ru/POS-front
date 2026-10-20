@@ -1,9 +1,9 @@
 import z from 'zod'
 
-export const branchSchema = z.object({
-    name: z.string().min(1, "this field is required"),
-    city: z.string().min(1, "this field is required"),
-    address: z.string().min(1, "this field is required")
+export const createBranchSchema = z.object({
+    name: z.string().min(1, "Branch Name is required"),
+    city: z.string().min(1, "City is required"),
+    address: z.string().min(1, "Address is required")
 })
 
-export type branchType = z.infer<typeof branchSchema>
+export type createBranchType = z.infer<typeof createBranchSchema>

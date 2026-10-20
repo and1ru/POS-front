@@ -5,13 +5,11 @@ import { styles } from "../../helper/style";
 import { Input } from "../../components/Input/Input";
 import { useCreateCompany } from "../../customHooks/useCreateCompany/useCreateCompany";
 import { SuccessMessage } from "../../components/SuccessMessage/SuccessMessage";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage";
 
 export const CreateCompany = () => {
   const { create, success, error } = useCreateCompany()
-  const [isSuccessOpen, setIsSuccessOpen] = useState(false) 
-  const [isErrorOpen, setIsErrorOpen] = useState(false) 
    const { handleSubmit, control, formState: { errors }, reset } = useForm<companyType>({
        defaultValues: {
         companyName: "",
@@ -30,22 +28,23 @@ export const CreateCompany = () => {
 
      useEffect(()=> {
       if(success){
-        setIsSuccessOpen(true)
         reset()
       }
-      if(error){
-        setIsErrorOpen(true)
-      }
-     },[success, error])
+     },[success])
    
      return (
       <>
-      <SuccessMessage open={isSuccessOpen}>
-        se creo con exito la compañia
-      </SuccessMessage>
-      <ErrorMessage open={isErrorOpen}>
-        error al intentar crear la compañia
+      { success &&
+        <SuccessMessage successfully={true}>
+          Company was created successfully
+        </SuccessMessage>
+      }
+      { error && 
+      <ErrorMessage open={true}>
+        ¡ops! Something went wrong trying to create the company
       </ErrorMessage>
+      }
+        
        <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
          <h1 className={styles.titulos}>CREATE NEW COMPANY</h1>
          

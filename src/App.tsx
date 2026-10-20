@@ -1,19 +1,15 @@
-// login
-// mostrar un mensaje de que no se pudo ingresar
+// hacer que el olvide contraseña funcione
+// mejorar el button de logout
 
+// root -> andres
 // cambiar el dashboard del root
-// agregar comentarios de error en el formulario de crate company ✔
-// agregar verificacion de password y confirmar password ✔
-// agregar comentarios de error en el formulario de login ✔
-// quitar los console.log()
 
-// cambiar el dashboard del owner
+// owner
+// mejorar el dashboard del owner
+// en el invetory no deberia filtrar por stock ni por precio solo name
 // obtener el historial de ventas
-// obtener todos los productos de la company ✔
-// cuando se cree un product que se reinicie el formulario si se creo correctamente ✔
 // cambiar el input
 // crear un input especifico para los files
-// agregar comentarios a formulario de crear branch ✔
 // hacer que los filtros funcionen en manage employees
 // mejorar los estilos y agregar comentarios de error en input de hire
 
