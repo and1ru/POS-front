@@ -19,7 +19,6 @@ export const ResetPassword = () => {
     
       const handleForm: SubmitHandler<resetPasswordType> = (data) => {
         navigate("/login", {replace:true})
-        console.log(data);
       };
       
     return (

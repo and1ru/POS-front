@@ -14,7 +14,6 @@ export const ForgotPassword = () => {
       });
     
       const handleForm: SubmitHandler<forgotPasswordType> = (data) => {
-        console.log(data);
       };
       
     return (

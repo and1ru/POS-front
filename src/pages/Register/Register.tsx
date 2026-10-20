@@ -18,7 +18,6 @@ export const Register = () => {
   });
 
   const handleForm: SubmitHandler<registerType> = (data) => {
-    console.log(data);
   };
 
   return (

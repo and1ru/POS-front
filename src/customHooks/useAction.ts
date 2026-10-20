@@ -24,7 +24,6 @@ export const useAction = <TResponse>(): UseActionResult<TResponse> => {
         try {
             const request = await fn()
             setData(request.data)
-            console.log(request.data)
             setSuccess(true)
         } catch (err) {
             if (axios.isAxiosError(err)) {

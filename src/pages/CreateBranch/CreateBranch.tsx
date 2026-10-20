@@ -21,7 +21,6 @@ export const CreateBranch = () => {
   });
 
   const handleForm: SubmitHandler<branchType> = (body) => {
-    console.log(data?.success)
     create(body)
     reset()
   };

@@ -6,7 +6,7 @@ import { RootNav } from "../RootAside/RootAside";
 
 export const NavBar = () => {
   const { authContext } = useAuthContext()
-  console.log(authContext.role)
+  
   switch (authContext.role) {
     case "owner":
       return <OwnerNav />

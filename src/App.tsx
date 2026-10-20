@@ -1,3 +1,6 @@
+// login
+// mostrar un mensaje de que no se pudo ingresar
+
 // cambiar el dashboard del root
 // agregar comentarios de error en el formulario de crate company ✔
 // agregar verificacion de password y confirmar password ✔
@@ -33,13 +36,13 @@ import { AuthContextProvider } from "./context/authContext/authContext.provider"
 import { NavContextProvider } from "./context/nav-context/nav-context-provider"
 import { AppRouterProvider } from "./routes/app-router-provider"
 
-function App(){
-  return(
+function App() {
+  return (
     <>
       <AuthContextProvider>
-      <NavContextProvider>
-        <AppRouterProvider/>
-      </NavContextProvider>
+        <NavContextProvider>
+          <AppRouterProvider />
+        </NavContextProvider>
       </AuthContextProvider>
 
     </>

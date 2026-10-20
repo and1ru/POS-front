@@ -16,7 +16,6 @@ export const CreateProduct = () => {
   });
 
   const handleForm: SubmitHandler<productType> = (data) => {
-    console.log(data);
   };
 
   return (

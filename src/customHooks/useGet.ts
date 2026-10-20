@@ -19,7 +19,6 @@ export const useGet = <TResponse>(url:string): UseGetResult<TResponse> => {
         try {
             const request = await apiClient.get(url)
             setData(request.data)
-            console.log(request.data)
         } catch (error) {
             console.error(error)
             setError(error)
