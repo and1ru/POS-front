@@ -17,6 +17,7 @@ import { ForgotPassword } from '../pages/ForgotPassoword/ForgotPassword'
 import { ResetPassword } from '../pages/ResetPassword/ResetPassword'
 import { CreateCompany } from '../pages/CreateCompany/CreateCompany'
 import { Hire } from '../pages/Hire/Hire'
+import { Employee } from '../pages/Employee/Employee'
 
 export const router = createBrowserRouter([
     {
@@ -64,8 +65,8 @@ export const router = createBrowserRouter([
                 element: <ManageEmployees/>
             },
             {
-                path: "employee/:userId",
-                element: <></>
+                path: "employee/:employeeId",
+                element: <Employee />
             },
             {
                 path: "create-product",

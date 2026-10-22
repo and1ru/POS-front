@@ -30,6 +30,7 @@ export const useAction = <TResponse>(): UseActionResult<TResponse> => {
                 setError(err)
                 console.error(err)
             }
+            console.log(err)
         } finally {
             setLoading(false)
         }

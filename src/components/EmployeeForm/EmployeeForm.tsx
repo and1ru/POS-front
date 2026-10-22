@@ -45,6 +45,7 @@ export const EmployeeForm = () => {
             <option value="asc">cajero</option>
           </select>
         </div>
+        <button className="bg-gray-600 py-2 px-4 rounded-lg text-white">Filter</button>
       </form>
     </section>
   )

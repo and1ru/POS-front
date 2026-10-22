@@ -7,13 +7,19 @@ export const ManageEmployees = () => {
   const { data, loading, error } = useEmployees()
   return (
     <>
-      <h1 className={styles.titulos}>Manage Employees</h1>
+      <h2 className={styles.titulos}>Manage Employees</h2>
       <EmployeeForm/>
-
       <section className="grid gap-5 px-20 grid-cols-2 xl:grid-cols-3">
-        { loading ? <p>cargando</p>:null}
-        { error ? <p>error</p>:null}
-        {data?.result.map((employee) => <EmployeeCard key={employee.id} id={employee.id} name={employee.name} role={employee.role}  /> )}
+        { loading && <p>cargando</p>}
+        { error ? <p>error</p> : null}
+        { data?.result.map((employee) => 
+          <EmployeeCard
+            branch={employee.branch_name}
+            key={employee.id} 
+            id={employee.id} 
+            name={employee.name} 
+            role={employee.role}  /> )
+        }
       </section>
     </>
   );

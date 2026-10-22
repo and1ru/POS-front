@@ -4,7 +4,7 @@ import { FilterStock } from "../FilterStock/FilterStock";
 import { FilterPrice } from "../FilterPrice/FilterPrice";
 
 export const InventoryForm = () => {
-    const [searchParams, setSearchParams] = useSearchParams()
+    const [_searchParams, setSearchParams] = useSearchParams()
     const [name, setName] = useState("")
   
     const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +31,6 @@ export const InventoryForm = () => {
         <FilterStock />
         <FilterPrice />
       </div>
-
     </form>
   );
 };

@@ -4,6 +4,7 @@ interface User {
     id:number;
     name:string;
     role:string
+    branch_name:string
 }
 
 interface Response {

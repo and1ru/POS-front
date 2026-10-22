@@ -13,6 +13,7 @@ export const CreateProduct = () => {
   const { handleSubmit, control, formState: { errors }, reset } = useForm<createProductType>({
     defaultValues: {
       name: "",
+      image: undefined
     },
     mode: "onBlur",
     resolver: zodResolver(createProductSchema)

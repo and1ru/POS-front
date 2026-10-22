@@ -4,9 +4,10 @@ interface Props {
   id: number;
   name:string;
   role:string
+  branch: string
 }
 
-export const EmployeeCard = ({ id, name, role }: Props) => {
+export const EmployeeCard = ({ id, name, role, branch }: Props) => {
   const navegar = useNavigate();
   
   function handleClick() {
@@ -20,7 +21,7 @@ export const EmployeeCard = ({ id, name, role }: Props) => {
           { name }
         </h3>
         <p className="text-xs font-medium text-gray-400 truncate w-full">
-          { role } — Sede
+          { role } — {branch}
         </p>
       </div>
       <button 

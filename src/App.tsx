@@ -1,17 +1,16 @@
-// hacer que el olvide contraseña funcione
-// mejorar el button de logout
+// hacer que el "olvide contraseña" funcione
+// agregar fecha de creacion de company
+// cuando actualice el producto mostrar inmediatamente
+// agregar un scaner de barras
+// agregar el poder imprimir recivo
 
 // root -> andres
 // cambiar el dashboard del root
 
 // owner
 // mejorar el dashboard del owner
-// en el invetory no deberia filtrar por stock ni por precio solo name
 // obtener el historial de ventas
-// cambiar el input
-// crear un input especifico para los files
 // hacer que los filtros funcionen en manage employees
-// mejorar los estilos y agregar comentarios de error en input de hire
 
 // para el admin
 // configurar los productos de la branch

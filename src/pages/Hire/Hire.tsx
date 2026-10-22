@@ -18,13 +18,15 @@ export const Hire = () => {
             email: "",
             password: "",
             branch: "",
-            role: "cashier"
+            role: "cashier",
+            salary: 1
         },
         mode: "onBlur",
         resolver: zodResolver(employeeSchema)
     })
 
     const handleForm: SubmitHandler<employeeType> = (body) => {
+        console.log(body)
         hire(body)
     }
 
@@ -38,7 +40,7 @@ export const Hire = () => {
         <>
             {success &&
                 <SuccessMessage successfully={true}>
-                    Employee was hiring successfully
+                    Employee was hiring 
                 </SuccessMessage>}
             {error &&
                 <ErrorMessage open={true}>
@@ -68,6 +70,13 @@ export const Hire = () => {
                         name="password" 
                         error={errors.password} 
                         type="password" 
+                    />
+                    <Input 
+                        control={control} 
+                        label="Salary" 
+                        name="salary" 
+                        error={errors.salary} 
+                        type="number" 
                     />
                     <Select control={control} name="role">
                         <option value="">Select Role</option>
