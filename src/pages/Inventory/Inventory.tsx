@@ -1,22 +1,32 @@
 import { styles } from "../../helper/style";
 import { useInventory } from "../../customHooks/useInventory/useInventory";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { InventoryProductCardOwner } from "../../components/InventoryProductCardOwner/InventoryProductCardOwner";
 
 export const Inventory = () => {
-  const { data } = useInventory()
-  const [ _productName, setProductName ] = useState<string>("")
+  const [ productName, setProductName ] = useState<string>("")
+  const [searchName, setSearchName] = useState(productName);
+
+  const { data, error, refetch } = useInventory(searchName)
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     setProductName(value)
   }
 
+  useEffect(()=> {
+    const timeOut = setTimeout(() => {
+      setSearchName(productName)
+    }, 1000)
+
+    return () => clearTimeout(timeOut)
+  },[productName])
+
   return (
     <>
       <h2 className={styles.titulos}>INVENTORY</h2>
-      <section className="w-100 mx-auto">
-        <form>
+      <section className="w-full mx-auto">
+        <form className="flex gap-5 w-200 mx-auto" onSubmit={e => e.preventDefault()}>
           <input 
             onChange={handleInput} 
             type="text" 
@@ -26,13 +36,15 @@ export const Inventory = () => {
         </form>
       </section>
       <section className="p-3 grid gap-10 grid-cols-2 xl:grid-cols-4">
-
+        { error ? <p>error</p> : null }
+        { data?.result.length === 0 && <p className="bg-blue-400 p-4 rounded-lg">There is not products yet</p>}
         { data?.result.map( product => 
           <InventoryProductCardOwner
             id={product.id}
             key={product.id}
             img={product.image_url}
             name={product.name}
+            onSubmit={ refetch }
             />
           )}
       </section>

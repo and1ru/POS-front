@@ -6,13 +6,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useUpdateProduct } from "../../customHooks/useUpdateProduct/useUpdateProduct";
 import { ErrorMessage } from "../ErrorMessage/ErrorMessage";
 import { SuccessMessage } from "../SuccessMessage/SuccessMessage";
+import { useEffect } from "react";
 
 interface Props {
   dialog: React.RefObject<HTMLDialogElement | null>
   id: number
+  onSubmit: () => void
 }
 
-export const UpdateProductOwner = ({ dialog, id}: Props) => {
+export const UpdateProductOwner = ({ dialog, id, onSubmit}: Props) => {
   const { update, error, loading, success } = useUpdateProduct()
   const { control, handleSubmit, reset } = useForm<uploadProductType>({
     defaultValues:{
@@ -39,6 +41,14 @@ export const UpdateProductOwner = ({ dialog, id}: Props) => {
     update(formData)
   }
 
+  useEffect(()=> {
+    if(success){
+      onSubmit()
+      reset()
+      dialog.current?.close()
+    }
+  },[success])
+
   return (
     <>
     { error && 
@@ -59,7 +69,7 @@ export const UpdateProductOwner = ({ dialog, id}: Props) => {
         </h3>
 
         <form className="flex flex-col gap-4" onSubmit={handleSubmit(handleForm)}>
-            <Input label="Image" control={control} name="image" type="file" />
+          <Input label="Image" control={control} name="image" type="file" />
           <Input label="Product Name" control={control} name="name" type="string" />
 
           {/* Botones de acción */}

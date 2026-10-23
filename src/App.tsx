@@ -1,8 +1,7 @@
 // hacer que el "olvide contraseña" funcione
-// agregar fecha de creacion de company
-// cuando actualice el producto mostrar inmediatamente
 // agregar un scaner de barras
 // agregar el poder imprimir recivo
+// si ocurre un arror al intentar obtener los productos o employees mostrar un mensaje descriptivo
 
 // root -> andres
 // cambiar el dashboard del root
@@ -10,7 +9,6 @@
 // owner
 // mejorar el dashboard del owner
 // obtener el historial de ventas
-// hacer que los filtros funcionen en manage employees
 
 // para el admin
 // configurar los productos de la branch

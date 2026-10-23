@@ -13,7 +13,13 @@ interface Response {
     result:User[]
 }
 
-export const useEmployees = () => {
-    const { data, loading, error } = useGet<Response>("employees")
+interface QueryT {
+    employeeBranch:string, 
+    employeeName:string, 
+    employeeRole:string
+}
+
+export const useEmployees = (query:QueryT) => {
+    const { data, loading, error } = useGet<Response>("employees", query )
     return { data, loading, error }
 }

@@ -1,18 +1,34 @@
-import { useState } from "react"
 import { BranchOptions } from "../BranchOptions/BranchOptions"
 
-export const EmployeeForm = () => {
-  const [branch, setBranch] = useState("")
+interface Props {
+  onChangeBranch: (value:string) => void
+  onChangeRole: (value:string) => void
+  onChangeName: (value:string) => void
+}
+
+export const EmployeeForm = ({ onChangeName, onChangeRole, onChangeBranch}: Props) => {
 
   const handleBranch = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value
-    setBranch(value)
+    onChangeBranch(value)
   }
+
+  const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value
+    onChangeName(value)
+  }
+
+  const handleRole = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value
+    onChangeRole(value)
+  }
+
   return (
     <section className="mb-10">
       <form className="mb-10 w-full max-w-4xl mx-auto flex flex-col md:flex-row gap-3 items-center bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">
         <div className="relative w-full md:flex-1">
           <input
+            onChange={handleName}
             type="search"
             placeholder="Buscar empleado..."
             className="w-full bg-gray-50 text-sm text-gray-900 placeholder-gray-400 border border-gray-200 rounded-xl py-2 px-4 transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 focus:bg-white"
@@ -20,10 +36,7 @@ export const EmployeeForm = () => {
         </div>
         <div className="flex w-full md:w-auto gap-3">
 
-
-          {/* filter branch */}
           <select
-            value={branch}
             onChange={handleBranch}
             name="sede"
             id="sede"
@@ -33,16 +46,15 @@ export const EmployeeForm = () => {
             <BranchOptions />
           </select>
 
-
-          {/* filter role */}
           <select
+            onChange={handleRole}
             name="role"
             id="role"
             className="w-full md:w-44 bg-gray-50 text-sm text-gray-700 border border-gray-200 rounded-xl py-2 px-3 cursor-pointer transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 focus:bg-white"
           >
             <option value="">Filtrar por Rol</option>
-            <option value="desc">Administrador</option>
-            <option value="asc">cajero</option>
+            <option value="admin">Administrador</option>
+            <option value="cashier">cajero</option>
           </select>
         </div>
         <button className="bg-gray-600 py-2 px-4 rounded-lg text-white">Filter</button>

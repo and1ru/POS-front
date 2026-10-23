@@ -15,7 +15,7 @@ interface Response {
     result: Product[]
 }
 
-export const useInventory = () => {
-    const { data, loading } = useGet<Response>("inventory")
-    return { data, loading}
+export const useInventory = (productName:string) => {
+    const { data, loading, error, recall } = useGet<Response>("inventory", { productName })
+    return { data, loading, error, refetch: recall}
 }

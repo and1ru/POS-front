@@ -8,7 +8,7 @@ interface UseGetResult<TResponse>{
     recall: () => Promise<void>;
 }
 
-export const useGet = <TResponse>(url:string): UseGetResult<TResponse> => {
+export const useGet = <TResponse>(url:string, query?:any): UseGetResult<TResponse> => {
     const [data, setData] = useState<TResponse | null>(null)
     const [loading, setLoading] = useState<boolean>(false)
     const [error, setError] = useState<unknown>(null)
@@ -17,7 +17,7 @@ export const useGet = <TResponse>(url:string): UseGetResult<TResponse> => {
         setLoading(true)
         setError(null)
         try {
-            const request = await apiClient.get(url)
+            const request = await apiClient.get(url, { params: query })
             setData(request.data)
         } catch (error) {
             console.error(error)
@@ -29,7 +29,7 @@ export const useGet = <TResponse>(url:string): UseGetResult<TResponse> => {
 
     useEffect(() => {
         get()
-    },[])
+    },[query])
 
     return { data, loading, error, recall:get }
 }
