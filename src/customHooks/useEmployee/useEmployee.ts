@@ -5,7 +5,9 @@ interface User {
     role:string
     salary:number
     branch_name:string
+    branch_id:number
     date: Date
+    id:number
 }
 
 interface Response {
@@ -15,6 +17,6 @@ interface Response {
 }
 
 export const useEmployee = (employeeId:number) => {
-    const { data, loading, error } = useGet<Response>(`employee/${employeeId}`)
-    return { data, loading, error }
+    const { data, loading, error, recall } = useGet<Response>(`employee/${employeeId}`)
+    return { data, loading, error, recall }
 }

@@ -17,7 +17,7 @@ export const Inventory = () => {
   useEffect(()=> {
     const timeOut = setTimeout(() => {
       setSearchName(productName)
-    }, 1000)
+    }, 500)
 
     return () => clearTimeout(timeOut)
   },[productName])

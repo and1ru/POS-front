@@ -1,12 +1,14 @@
+import { useAuthContext } from "../../context/authContext/authContext"
 import { BranchOptions } from "../BranchOptions/BranchOptions"
 
 interface Props {
-  onChangeBranch: (value:string) => void
-  onChangeRole: (value:string) => void
-  onChangeName: (value:string) => void
+  onChangeBranch: (value: string) => void
+  onChangeRole: (value: string) => void
+  onChangeName: (value: string) => void
 }
 
-export const EmployeeForm = ({ onChangeName, onChangeRole, onChangeBranch}: Props) => {
+export const EmployeeForm = ({ onChangeName, onChangeRole, onChangeBranch }: Props) => {
+  const { authContext: { role } } = useAuthContext()
 
   const handleBranch = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value
@@ -35,29 +37,31 @@ export const EmployeeForm = ({ onChangeName, onChangeRole, onChangeBranch}: Prop
           />
         </div>
         <div className="flex w-full md:w-auto gap-3">
+          {role === "owner" &&
+            <>
+              <select
+                onChange={handleBranch}
+                name="sede"
+                id="sede"
+                className="w-full md:w-44 bg-gray-50 text-sm text-gray-700 border border-gray-200 rounded-xl py-2 px-3 cursor-pointer transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 focus:bg-white"
+              >
+                <option value="">Select Branch</option>
+                <BranchOptions />
+              </select>
 
-          <select
-            onChange={handleBranch}
-            name="sede"
-            id="sede"
-            className="w-full md:w-44 bg-gray-50 text-sm text-gray-700 border border-gray-200 rounded-xl py-2 px-3 cursor-pointer transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 focus:bg-white"
-          >
-            <option value="">Select Branch</option>
-            <BranchOptions />
-          </select>
-
-          <select
-            onChange={handleRole}
-            name="role"
-            id="role"
-            className="w-full md:w-44 bg-gray-50 text-sm text-gray-700 border border-gray-200 rounded-xl py-2 px-3 cursor-pointer transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 focus:bg-white"
-          >
-            <option value="">Filtrar por Rol</option>
-            <option value="admin">Administrador</option>
-            <option value="cashier">cajero</option>
-          </select>
+              <select
+                onChange={handleRole}
+                name="role"
+                id="role"
+                className="w-full md:w-44 bg-gray-50 text-sm text-gray-700 border border-gray-200 rounded-xl py-2 px-3 cursor-pointer transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 focus:bg-white"
+              >
+                <option value="">Filtrar por Rol</option>
+                <option value="admin">Administrador</option>
+                <option value="cashier">cajero</option>
+              </select>
+            </>
+          }
         </div>
-        <button className="bg-gray-600 py-2 px-4 rounded-lg text-white">Filter</button>
       </form>
     </section>
   )

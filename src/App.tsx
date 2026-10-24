@@ -2,6 +2,7 @@
 // agregar un scaner de barras
 // agregar el poder imprimir recivo
 // si ocurre un arror al intentar obtener los productos o employees mostrar un mensaje descriptivo
+// agregar un status a los employees
 
 // root -> andres
 // cambiar el dashboard del root

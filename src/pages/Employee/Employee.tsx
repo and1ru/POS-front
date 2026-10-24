@@ -1,5 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEmployee } from "../../customHooks/useEmployee/useEmployee";
+import { FireEmployeeButton } from "../../components/FireEmployeeButton/FireEmployeeButton";
+import { EditEmployeeButton } from "../../components/EditEmployeeButton/EditEmployeeButton";
 
 export const Employee = () => {
     const { employeeId } = useParams()
@@ -7,12 +9,23 @@ export const Employee = () => {
       return <p>error</p>
     }
 
-    const { data, error, loading } = useEmployee(Number(employeeId))
+    const { data, error, loading, recall } = useEmployee(Number(employeeId))
 
     const employee = data?.result
 
     if(loading) return <p>loading</p>
     if(error || !employee) return <p>error</p>
+
+    const date = new Date(employee?.date)
+    const day = date.getDate()
+    // el primero es el idioma en el que estara
+    const month = date.toLocaleDateString("en", { month:"long" })
+    const year = date.getFullYear()
+
+    const handleRefetch = () => {
+      recall()
+    }
+
   return (
     <div className="mx-auto w-full max-w-3xl space-y-6 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
       {/* Información principal del empleado */}
@@ -47,7 +60,7 @@ export const Employee = () => {
           </div>
 
           <p className="mt-2 text-sm text-gray-500">
-            ID del empleado: #1
+            ID del empleado: #{ employeeId }
           </p>
         </div>
       </section>
@@ -62,21 +75,21 @@ export const Employee = () => {
           <article className="rounded-xl border border-gray-200 bg-gray-50 p-4">
             <p className="text-sm font-medium text-gray-500">Cargo</p>
             <p className="mt-2 font-semibold text-gray-900">
-              Admin
+              { employee.role }
             </p>
           </article>
 
           <article className="rounded-xl border border-gray-200 bg-gray-50 p-4">
             <p className="text-sm font-medium text-gray-500">Sucursal</p>
             <p className="mt-2 font-semibold text-gray-900">
-              namekusein
+              { employee.branch_name }
             </p>
           </article>
 
           <article className="rounded-xl border border-gray-200 bg-gray-50 p-4">
             <p className="text-sm font-medium text-gray-500">Salario mensual</p>
             <p className="mt-2 font-semibold text-gray-900">
-              $10000
+              ${ employee.salary }
             </p>
           </article>
 
@@ -85,7 +98,7 @@ export const Employee = () => {
               Fecha de contratación
             </p>
             <p className="mt-2 font-semibold text-gray-900">
-              10 agosto 2020
+              { day } { month } { year }
             </p>
           </article>
         </div>
@@ -93,21 +106,15 @@ export const Employee = () => {
 
       {/* Acciones */}
       <footer className="flex flex-col gap-4 border-t border-gray-200 pt-6 sm:flex-row sm:items-center sm:justify-between">
-        <button
-          type="button"
-          disabled={!true}
-          className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-300"
-        >
-          Edit Employee
-        </button>
-
-        <button
-          type="button"
-          disabled={!true}
-          className="inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-300"
-        >
-          Despedir empleado
-        </button>
+        <EditEmployeeButton
+          name={employee.name}
+          branch={employee.branch_id}
+          role={employee.role}
+          salary={employee.salary}
+          employeeId={employee.id}
+          onSubmit={handleRefetch}
+        />
+        <FireEmployeeButton />
       </footer>
     </div>
   );
