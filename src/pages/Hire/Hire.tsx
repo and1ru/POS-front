@@ -9,9 +9,11 @@ import { useEffect } from "react"
 import { SuccessMessage } from "../../components/SuccessMessage/SuccessMessage"
 import { ErrorMessage } from "../../components/ErrorMessage/ErrorMessage"
 import { styles } from "../../helper/style"
+import { useAuthContext } from "../../context/authContext/authContext"
 
 export const Hire = () => {
     const { hire, error, success, loading } = useHire()
+    const { authContext:{role} } = useAuthContext()
     const { control, formState: { errors }, handleSubmit, reset } = useForm<employeeType>({
         defaultValues: {
             name: "",
@@ -78,6 +80,8 @@ export const Hire = () => {
                         error={errors.salary} 
                         type="number" 
                     />
+                    { role === "owner" &&
+                    <>
                     <Select control={control} name="role">
                         <option value="">Select Role</option>
                         <option value="cashier">Cashier</option>
@@ -87,6 +91,9 @@ export const Hire = () => {
                         <option value="0">Select Branch</option>
                         <BranchOptions />
                     </Select>
+                    </>
+                    }
+                    
                     <button 
                         disabled={loading}
                         className={`bg-gray-700 p-3 rounded-lg text-white ${ loading && "cursor-not-allowed"}`}>Send</button>

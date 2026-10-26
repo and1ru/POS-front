@@ -6,7 +6,7 @@ export const employeeSchema = z.object({
     password: z.string().min(8, "Password must be at least 8 length"),
     salary: z.coerce.number().positive("Salary must be positive"),
     role: z.enum(["admin", "cashier"]),
-    branch: z.string().min(1, "this field is required")
+    branch: z.string()
 })
 
 export type employeeType = z.infer<typeof employeeSchema>

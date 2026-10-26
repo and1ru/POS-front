@@ -31,6 +31,7 @@ export const AdminNav = () => {
         <NavBarLi address="/private/history" title="History" />
         <NavBarLi address="/private/statistics" title="statistics" />
         <NavBarLi address="/private/manage-employees" title="Manage Employees" />
+        <NavBarLi address="/private/hire" title="Hire" />
 
         <LogOut/>
       </ul>

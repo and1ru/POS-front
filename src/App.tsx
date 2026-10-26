@@ -12,17 +12,12 @@
 // obtener el historial de ventas
 
 // para el admin
-// configurar los productos de la branch
-// obtener los productos de la branch
-// agregar filtros en inventory
 // history de ventas
 // filtros en history
-// en manage employee solo puede buscar usuarios (los demas filtros no estan disponibles)
-// hire pero sin poder decidir el role o la branch
 
 // cambiar el dashboard
 // hacer un sell
-// buscar un product por nombre o id del product
+// buscar un product por nombre
 // poder ver el history de las ventas que haya hecho
 // poder filtrar por fecha en history
 

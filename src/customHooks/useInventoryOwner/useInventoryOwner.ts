@@ -5,8 +5,6 @@ interface Product {
     name:string;
     image_url:string
     price:number;
-    stock:number
-    is_in_branch:number
 }
 
 interface Response {
@@ -15,7 +13,7 @@ interface Response {
     result: Product[]
 }
 
-export const useInventory = (productName:string) => {
+export const useInventoryOwner = (productName:string) => {
     const { data, loading, error, recall } = useGet<Response>("inventory", { productName })
     return { data, loading, error, refetch: recall}
 }

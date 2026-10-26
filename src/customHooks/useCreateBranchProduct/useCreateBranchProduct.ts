@@ -8,15 +8,18 @@ interface Response {
 
 interface Body {
     productId: number;
-    price: number;
-    stock: number;
+    currentStock: number,
+    minStock: number,
+    boughtPriceProduct: number,
+    sellPriceProduct: number
 }
 
 export const useCreateBranchProduct = () => {
-    const { action, loading, error, data, reset } = useAction<Response>()
+    const { action, loading, error, reset, success } = useAction<Response>()
+    
     const create = (body:Body) => {
         action(() => apiClient.post("branch-product", body))
     }
 
-    return { create, loading, error, data, resetRequest:reset }
+    return { create, loading, error, success, resetRequest:reset }
 }

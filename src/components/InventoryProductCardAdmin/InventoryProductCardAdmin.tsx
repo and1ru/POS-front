@@ -1,17 +1,19 @@
-import { useRef } from "react";
 import { UpdateProduct } from "../UpdateProduct/UpdateProduct";
 
 interface Props {
   img: string
   name: string
-  price: number,
   stock: number
   is_in_branch: number
   id:number
+  onSubmit: () => void
+  boughtPriceProduct: number
+  minStock: number
+  sellPriceProduct: number
+  branch_product_id: number
 }
 
-export const InventoryProductCard = ({ img, name, price, stock, is_in_branch, id }: Props) => {
-  const dialogRef = useRef<HTMLDialogElement | null>(null);
+export const InventoryProductCardAdmin = ({ img, name, stock, is_in_branch, id, onSubmit, boughtPriceProduct, minStock, sellPriceProduct, branch_product_id }: Props) => {
 
   return (
     <>
@@ -19,22 +21,30 @@ export const InventoryProductCard = ({ img, name, price, stock, is_in_branch, id
       <img
         src={img}
         alt="Producto"
-        className="w-full h-32 rounded-xl mb-4"
+        className="w-full h-32 rounded-xl mb-4 object-contain"
       />
       <div className="flex flex-col gap-1 mb-4">
         <p className="font-bold text-gray-800 text-lg capitalize">{name}</p>
 
         <div className="flex justify-between items-center mt-1">
-          {!price ? null : <p className="text-xl font-extrabold text-indigo-600">{price}</p>}
+          {!sellPriceProduct ? null : <p className="text-xl font-extrabold text-indigo-600">{sellPriceProduct}</p>}
 
           {!stock ? null : 
           <p className="text-xs font-medium text-gray-400">Stock: <span className="text-gray-600 font-semibold">{stock} u.</span></p>}
         </div>
+        <UpdateProduct
+          is_in_branch={ is_in_branch }
+          id={id}
+          onSubmit={onSubmit}
+          boughtPriceProduct={boughtPriceProduct}
+          minStock={minStock}
+          sellPriceProduct={sellPriceProduct}
+          stock={stock}
+          key={id}
+          branch_product_id={branch_product_id}
+        />
       </div>
-      <UpdateProduct dialog={dialogRef} id={id} is_in_branch={is_in_branch}/>
     </div>
     </>
-
   );
 };
-
