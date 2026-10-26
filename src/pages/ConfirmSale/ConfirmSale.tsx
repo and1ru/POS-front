@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom"
 import { ConfirmSaleProduct } from "../../components/ConfirmSaleProduct/ConfirmSaleProduct"
 import { SummarySale } from "../../components/SummarySale/SummarySale"
+import { useCartStore } from "../../context/cartContext/cartStore"
 
 export const ConfirmSale = () => {
+    const products = useCartStore((state) => state.cart)
+
     return (
         <main className="min-h-screen bg-gray-50 px-4 py-8 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-5xl">
@@ -22,29 +25,19 @@ export const ConfirmSale = () => {
                                     Productos
                                 </h2>
                                 <p className="mt-1 text-sm text-gray-500">
-                                    3 productos en la compra
+                                    {products.length} productos en la compra
                                 </p>
                             </div>
                         </div>
                         <div className="space-y-3">
-                            <ConfirmSaleProduct
-                                image="https://via.placeholder.com/100"
-                                name="Teclado Mecánico RGB"
-                                price={25.00}
-                                quantity={2}
+                            { products.map((product) => (
+                                <ConfirmSaleProduct
+                                image={product.img}
+                                name={product.name}
+                                price={product.price}
+                                quantity={product.quantity}
                             />
-                            <ConfirmSaleProduct
-                                image="https://via.placeholder.com/100"
-                                name="Mouse Inalámbrico"
-                                price={15.50}
-                                quantity={1}
-                            />
-                            <ConfirmSaleProduct
-                                image="https://via.placeholder.com/100"
-                                name="Monitor 24 pulgadas"
-                                price={120.00}
-                                quantity={1}
-                            />
+                            ))}
                         </div>
                     </section>
                     <SummarySale />

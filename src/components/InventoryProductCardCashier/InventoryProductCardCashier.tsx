@@ -1,3 +1,5 @@
+import { useCartStore } from "../../context/cartContext/cartStore"
+
 interface Props {
     id: number
     name: string
@@ -7,6 +9,12 @@ interface Props {
 }
 
 export const InventoryProductCardCashier = ({img, id, name, price, stock }: Props) => {
+    const addProduct = useCartStore((store) => store.addProduct)
+
+    const handleClick = () => {
+        addProduct({ img, id, name, price, quantity:1 })
+    }
+
     return (
         <article className="group flex w-full max-w-xs flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-blue-200 hover:shadow-lg">
             <div className="relative flex h-44 items-center justify-center overflow-hidden rounded-xl bg-gray-50 p-3">
@@ -41,6 +49,7 @@ export const InventoryProductCardCashier = ({img, id, name, price, stock }: Prop
                 </p>
 
                 <button
+                    onClick={handleClick}
                     type="button"
                     disabled={stock <= 0}
                     className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:bg-gray-200 disabled:text-gray-500"

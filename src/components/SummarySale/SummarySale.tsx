@@ -1,4 +1,8 @@
 import { useState } from "react"
+import { useCartStore } from "../../context/cartContext/cartStore"
+import { CashPaymentMethod } from "../CashPaymentMethod/CashPaymentMethod"
+import { TransferPaymentMethod } from "../TransferPaymentMethod/TransferPaymentMethod"
+import { MixPaymentMethod } from "../MixPaymentMethod/MixPaymentMethod"
 
 type PaymentMethod = "cash" | "transfer" | "mix"
 type SaleStatus = "pending" | "done"
@@ -6,6 +10,9 @@ type SaleStatus = "pending" | "done"
 export const SummarySale = () => {
     const [paymentMethod, setPaymentMethod] =useState<PaymentMethod>("cash")
     const [status, setStatus] = useState<SaleStatus>("pending")
+
+    const products = useCartStore((state) => state.cart)
+    const total = products.reduce((total, product) => total + (product.price * product.quantity) , 0)
 
     return (
         <aside className="h-fit rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
@@ -18,7 +25,7 @@ export const SummarySale = () => {
                 </span>
 
                 <span className="text-3xl font-bold text-indigo-600">
-                    $185.50
+                    ${total}
                 </span>
             </div>
             <div className="mt-6">
@@ -62,91 +69,9 @@ export const SummarySale = () => {
                 </div>
             </div>
 
-            {paymentMethod === "mix" && (
-                <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50 p-4">
-                    <div className="space-y-4">
-                        <div>
-                            <label className="mb-2 block text-sm font-medium text-gray-700">
-                                Efectivo
-                            </label>
-                            <div className="relative">
-                                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-400">
-                                    $
-                                </span>
-                                <input
-                                    type="number"
-                                    placeholder="0.00"
-                                    defaultValue="80.00"
-                                    className="w-full rounded-lg border border-gray-200 bg-white py-2.5 pl-8 pr-4 text-sm text-gray-800 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
-                                />
-                            </div>
-                        </div>
-                        <div>
-                            <label className="mb-2 block text-sm font-medium text-gray-700">
-                                Transferencia
-                            </label>
-                            <div className="relative">
-                                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-gray-400">
-                                    $
-                                </span>
-                                <input
-                                    type="number"
-                                    placeholder="0.00"
-                                    defaultValue="105.50"
-                                    className="w-full rounded-lg border border-gray-200 bg-white py-2.5 pl-8 pr-4 text-sm text-gray-800 outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100"
-                                />
-                            </div>
-                        </div>
-
-                    </div>
-                    <div className="mt-5 border-t border-gray-200 pt-4">
-                        <div className="flex items-center justify-between text-sm">
-                            <span className="text-gray-500">
-                                Total ingresado
-                            </span>
-                            <span className="font-semibold text-gray-800">
-                                $185.50
-                            </span>
-                        </div>
-                        <div className="mt-2 flex items-center justify-between text-sm">
-                            <span className="text-gray-500">
-                                Estado
-                            </span>
-
-                            <span className="rounded-full bg-green-100 px-2.5 py-1 text-xs font-semibold text-green-700">
-                                Completo
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            )}
-            {paymentMethod !== "mix" && (
-                <div className="mt-6 rounded-xl border border-gray-200 bg-gray-50 p-4">
-
-                    <div className="flex items-center justify-between">
-                        <span className="text-sm text-gray-500">
-                            Método seleccionado
-                        </span>
-
-                        <span className="text-sm font-semibold text-gray-800">
-                            {paymentMethod === "cash"
-                                ? "Efectivo"
-                                : "Transferencia"}
-                        </span>
-                    </div>
-
-                    <div className="mt-3 flex items-center justify-between">
-                        <span className="text-sm text-gray-500">
-                            Total a pagar
-                        </span>
-
-                        <span className="text-sm font-bold text-indigo-600">
-                            $185.50
-                        </span>
-                    </div>
-
-                </div>
-            )}
+            {paymentMethod === "mix" && <MixPaymentMethod />}
+            { paymentMethod === "cash" && <CashPaymentMethod />}
+            { paymentMethod === "transfer" && <TransferPaymentMethod />}
 
             {status === "done" && (
                 <div className="mt-6 rounded-xl border border-green-200 bg-green-50 p-4">
@@ -186,6 +111,7 @@ export const SummarySale = () => {
                     </div>
                 </div>
             )}
+            
             {status !== "done" && (
                 <button
                     onClick={() => setStatus("done")}

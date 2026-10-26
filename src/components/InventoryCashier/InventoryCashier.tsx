@@ -24,7 +24,7 @@ export const InventoryCashier = () => {
     return (
         <>
             <h2 className={styles.titulos}>PRODUCTS</h2>
-            <section className="w-full mx-auto">
+            <section className="w-full mx-auto mb-10">
                 <form className="flex gap-5 w-200 mx-auto" onSubmit={e => e.preventDefault()}>
                     <input
                         onChange={handleInput}
