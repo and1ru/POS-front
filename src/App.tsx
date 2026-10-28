@@ -1,25 +1,20 @@
 // hacer que el "olvide contraseña" funcione
 // agregar un scaner de barras
-// agregar el poder imprimir recivo
-// si ocurre un arror al intentar obtener los productos o employees mostrar un mensaje descriptivo
+// si ocurre un error al intentar obtener los productos o employees mostrar un mensaje descriptivo
 // agregar un status a los employees
+// paginacion para history
 
 // root -> andres
 // cambiar el dashboard del root
 
 // owner
-// mejorar el dashboard del owner
-// obtener el historial de ventas
+// estadisticas
 
 // para el admin
-// history de ventas
-// filtros en history
+// estadisticas
 
-// cambiar el dashboard
-// hacer un sell
-// buscar un product por nombre
-// poder ver el history de las ventas que haya hecho
-// poder filtrar por fecha en history
+// Para cashier
+// poder imprimir y enviar gmail
 
 import { AuthContextProvider } from "./context/authContext/authContext.provider"
 import { NavContextProvider } from "./context/nav-context/nav-context-provider"
@@ -33,7 +28,6 @@ function App() {
           <AppRouterProvider />
         </NavContextProvider>
       </AuthContextProvider>
-
     </>
   )
 }

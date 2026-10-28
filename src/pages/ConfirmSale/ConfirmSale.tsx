@@ -5,7 +5,8 @@ import { useCartStore } from "../../context/cartContext/cartStore"
 
 export const ConfirmSale = () => {
     const products = useCartStore((state) => state.cart)
-
+    const clear = useCartStore((state) => state.clear)
+    
     return (
         <main className="min-h-screen bg-gray-50 px-4 py-8 sm:px-6 lg:px-8">
             <div className="mx-auto max-w-5xl">
@@ -30,18 +31,24 @@ export const ConfirmSale = () => {
                             </div>
                         </div>
                         <div className="space-y-3">
-                            { products.map((product) => (
+                            {products.map((product) => (
                                 <ConfirmSaleProduct
-                                image={product.img}
-                                name={product.name}
-                                price={product.price}
-                                quantity={product.quantity}
-                            />
+                                    image={product.img}
+                                    name={product.name}
+                                    price={product.price}
+                                    quantity={product.quantity}
+                                    key={product.id}
+                                />
                             ))}
                         </div>
                     </section>
                     <SummarySale />
-                    <Link to="/private/sell" replace className="mt-6 w-full rounded-xl bg-indigo-600 px-4 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 active:scale-[0.99]">New Sale</Link>
+
+                    <Link 
+                        onClick={clear}
+                        to="/private/sell" 
+                        replace 
+                        className="mt-6 w-full rounded-xl bg-indigo-600 px-4 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 active:scale-[0.99]">New Sale</Link>
                 </div>
             </div>
         </main>

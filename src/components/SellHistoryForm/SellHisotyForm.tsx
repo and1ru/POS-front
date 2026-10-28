@@ -1,20 +1,14 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useState } from "react";
 import { FilterDate } from "../FilterDate/FilterDate";
 
 export const SellHisotyForm = () => {
-  const [_searchParams, setSearchParams] = useSearchParams()
   const [saleId, setSaleId] = useState("")
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value
     setSaleId(value)
   }
-
-  useEffect(() => {
-    setSearchParams({ saleId })
-  }, [saleId])
-
+  
   return (
     <section className="mb-10 w-full max-w-4xl mx-auto">
       <form className="flex flex-col md:flex-row gap-3 items-center bg-white p-4 rounded-2xl border border-gray-100 shadow-sm">

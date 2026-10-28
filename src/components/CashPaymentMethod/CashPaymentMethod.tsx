@@ -1,8 +1,11 @@
-import { useState } from "react"
 import { useCartStore } from "../../context/cartContext/cartStore"
 
-export const CashPaymentMethod = () => {
-    const [money, setMoney] = useState(0)
+interface Props {
+    money: number, 
+    setMoney: (value:number) => void 
+}
+
+export const CashPaymentMethod = ({money, setMoney}:Props) => {
 
     const products = useCartStore((state) => state.cart)
 

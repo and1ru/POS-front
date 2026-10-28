@@ -1,20 +1,43 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useCartStore } from "../../context/cartContext/cartStore"
 import { CashPaymentMethod } from "../CashPaymentMethod/CashPaymentMethod"
 import { TransferPaymentMethod } from "../TransferPaymentMethod/TransferPaymentMethod"
 import { MixPaymentMethod } from "../MixPaymentMethod/MixPaymentMethod"
+import { useNewSale } from "../../customHooks/useNewSale/useNewSale"
+import { ErrorMessage } from "../ErrorMessage/ErrorMessage"
 
 type PaymentMethod = "cash" | "transfer" | "mix"
 type SaleStatus = "pending" | "done"
 
 export const SummarySale = () => {
+    const { newSale, error, success } = useNewSale()
+
     const [paymentMethod, setPaymentMethod] =useState<PaymentMethod>("cash")
     const [status, setStatus] = useState<SaleStatus>("pending")
+    const [amountReceived, setAmountReceived] = useState(0)
 
     const products = useCartStore((state) => state.cart)
     const total = products.reduce((total, product) => total + (product.price * product.quantity) , 0)
 
+    const handleClick = () => {
+        const productsSale = products.map((product) => { 
+            return  {id: product.id, price: product.price, quantity: product.quantity}
+        })
+
+        newSale({amountReceived, products:productsSale})
+    }
+
+    const disableButton = amountReceived<total
+
+    useEffect(()=> {
+        if(success){
+            setStatus("done")
+        }
+    },[success])
+
     return (
+        <>
+        { error && <ErrorMessage open={true}>¡ops! Something went wrong trying to create the new sale</ErrorMessage>}
         <aside className="h-fit rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
             <h2 className="text-lg font-semibold text-gray-900">
                 Resumen de compra
@@ -28,7 +51,10 @@ export const SummarySale = () => {
                     ${total}
                 </span>
             </div>
-            <div className="mt-6">
+            { status === "pending" && 
+                <>
+                <div className="mt-6">
+                
                 <label className="mb-3 block text-sm font-semibold text-gray-700">
                     Método de pago
                 </label>
@@ -68,10 +94,15 @@ export const SummarySale = () => {
                     </button>
                 </div>
             </div>
-
-            {paymentMethod === "mix" && <MixPaymentMethod />}
-            { paymentMethod === "cash" && <CashPaymentMethod />}
-            { paymentMethod === "transfer" && <TransferPaymentMethod />}
+                </>
+                }
+            
+            { status === "pending" ?
+                paymentMethod === "mix" ? <MixPaymentMethod /> : 
+                    paymentMethod === "cash" ? <CashPaymentMethod money={amountReceived} setMoney={setAmountReceived} /> :
+                    paymentMethod === "transfer" && <TransferPaymentMethod />
+                : null
+            }
 
             {status === "done" && (
                 <div className="mt-6 rounded-xl border border-green-200 bg-green-50 p-4">
@@ -111,16 +142,19 @@ export const SummarySale = () => {
                     </div>
                 </div>
             )}
-            
+
             {status !== "done" && (
                 <button
-                    onClick={() => setStatus("done")}
+                    disabled={disableButton}
+                    onClick={handleClick}
                     type="button"
-                    className="mt-6 w-full rounded-xl bg-indigo-600 px-4 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 active:scale-[0.99]"
+                    className="mt-6 w-full rounded-xl bg-indigo-600 px-4 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     Confirmar compra
                 </button>
             )}
         </aside>
+        </>
+        
     )
 }
